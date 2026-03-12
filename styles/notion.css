@@ -931,7 +931,7 @@ code[class*='language-'] {
   padding: 16px 16px 16px 12px;
   display: inline-flex;
   width: 100%;
-  border-radius: 8px;
+  border-radius: 14px;
   border-width: 1px;
   align-items: center;
   box-sizing: border-box;
@@ -962,7 +962,7 @@ code[class*='language-'] {
 .notion-callout-text .notion-text{
   padding: 0px 0px !important;
   margin: 0px 0px !important;
-  line-height: normal !important;
+  line-height: 1.6 !important;
 }
 
 .notion-toggle {
