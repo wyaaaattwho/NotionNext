@@ -962,7 +962,7 @@ code[class*='language-'] {
 .notion-callout-text .notion-text{
   padding: 0px 0px !important;
   margin: 0px 0px !important;
-  line-height: 1.8 !important;
+  line-height: 2.0 !important;
 }
 
 .notion-toggle {
