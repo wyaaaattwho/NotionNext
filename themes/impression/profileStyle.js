@@ -78,18 +78,6 @@ export const ProfileStyle = () => (
     #theme-impression .im-profile-custom strong {
       font-weight: 600;
     }
-    #theme-impression .im-profile-custom .notion-link {
-      color: var(--im-green);
-      opacity: 1;
-      border-bottom: 1px solid color-mix(in srgb, currentColor 40%, transparent);
-      transition:
-        color 0.25s,
-        border-color 0.25s;
-    }
-    #theme-impression .im-profile-custom .notion-link:hover {
-      color: var(--im-rust);
-      border-color: var(--im-rust);
-    }
     #theme-impression .im-profile-custom .notion-blue {
       color: inherit;
     }

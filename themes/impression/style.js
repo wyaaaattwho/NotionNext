@@ -45,6 +45,38 @@ export const Style = () => (
       color: inherit;
       text-decoration: none;
     }
+    #theme-impression .notion-link,
+    #theme-impression .notion-page-link {
+      border-bottom: 0 !important;
+      text-decoration: none;
+    }
+    #theme-impression .notion-link {
+      color: var(--im-green);
+      opacity: 1;
+      transition: color 0.25s;
+    }
+    #theme-impression .notion-link:hover,
+    #theme-impression .notion-link:focus-visible {
+      color: var(--im-rust);
+    }
+    #theme-impression .notion-link .notion-inline-underscore,
+    #theme-impression .notion-page-link .notion-inline-underscore,
+    #theme-impression .notion-inline-underscore:has(.notion-link) {
+      text-decoration: none;
+    }
+    #theme-impression .notion-link .notion-page-title-text,
+    #theme-impression .notion-page-link .notion-page-title-text,
+    #theme-impression
+      .notion
+      a
+      :is(
+        .notion-page-text,
+        .notion-page-title-text,
+        .notion-external-title,
+        .notion-table-of-contents-item-body
+      ) {
+      border-bottom: 0 !important;
+    }
     #theme-impression button,
     #theme-impression input {
       font: inherit;
@@ -220,7 +252,9 @@ export const Style = () => (
       border-radius: 50%;
       color: var(--im-ink);
       font-size: 21px;
-      transition: transform 0.4s var(--im-ease), background 0.3s;
+      transition:
+        transform 0.4s var(--im-ease),
+        background 0.3s;
     }
     #theme-impression .im-hero .im-text-link:hover {
       gap: 14px;
@@ -1212,18 +1246,6 @@ export const Style = () => (
     }
     .dark #theme-impression .im-article .notion-blue {
       color: #a0c7d0;
-    }
-    #theme-impression .im-article .notion-link {
-      border-bottom: 1px solid color-mix(in srgb, currentColor 35%, transparent);
-      opacity: 1;
-      transition:
-        color 0.25s,
-        border-color 0.25s;
-      text-underline-offset: 3px;
-    }
-    #theme-impression .im-article .notion-link:hover {
-      color: var(--im-rust);
-      border-color: var(--im-rust);
     }
     #theme-impression .im-article .notion-list {
       line-height: 1.75;
