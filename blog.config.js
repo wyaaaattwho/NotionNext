@@ -96,7 +96,9 @@ const BLOG = {
 
   // 内嵌 Notion 子页面 URL 跟随父级文章路径，例如 /article/post/{pageId}
   INNER_PAGE_URL_PARENT_PATH:
-    process.env.NEXT_PUBLIC_INNER_PAGE_URL_PARENT_PATH || false
+    process.env.NEXT_PUBLIC_INNER_PAGE_URL_PARENT_PATH || false,
+
+  ...require('./site.config')
 }
 
 module.exports = BLOG
