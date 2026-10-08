@@ -172,7 +172,6 @@ export const ProfileStyle = () => (
       gap: 12px;
       height: 142px;
       padding: 12px;
-      background: #fff;
       border-radius: 2px;
     }
     #theme-impression .im-career-logos .im-profile-figure {
