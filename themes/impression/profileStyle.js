@@ -136,7 +136,6 @@ export const ProfileStyle = () => (
     #theme-impression .im-profile-entries-text,
     #theme-impression .im-profile-entries-content {
       padding-left: 48px;
-      max-width: 940px;
       font-size: 20px;
     }
     #theme-impression .im-profile-fallback + .im-profile-fallback {
