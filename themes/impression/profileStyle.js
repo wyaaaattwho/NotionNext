@@ -218,6 +218,18 @@ export const ProfileStyle = () => (
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 28px;
     }
+    @media (min-width: 651px) {
+      #theme-impression .im-profile-entries-publications.im-paper-masonry {
+        grid-auto-flow: row dense;
+        grid-auto-rows: 4px;
+        row-gap: 0;
+        align-items: start;
+      }
+      #theme-impression .im-profile-entries-publications.im-paper-masonry > * {
+        grid-column: var(--im-paper-column);
+        grid-row-end: span var(--im-paper-span);
+      }
+    }
     #theme-impression .im-paper-card,
     #theme-impression .im-project-card {
       display: flex;

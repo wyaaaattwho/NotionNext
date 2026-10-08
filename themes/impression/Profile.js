@@ -14,6 +14,7 @@ import {
 import { parseProfile } from './profileData'
 import { ProfileStyle } from './profileStyle'
 import { splitPaperBibliography } from './profilePresentation'
+import usePublicationMasonry from './usePublicationMasonry'
 
 const Equation = dynamic(
   () => import('@/components/Equation').then(m => m.Equation),
@@ -264,6 +265,8 @@ export default function Profile({ post }) {
   const root = useRef(null)
   const zoom = useRef(null)
   const sections = data.sections.filter(section => section.kind !== 'intro')
+
+  usePublicationMasonry(root, data)
 
   useEffect(() => {
     let stopped = false
