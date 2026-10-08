@@ -1,5 +1,10 @@
 import { render } from '@testing-library/react'
 import SEO, { generateStructuredData } from '@/components/SEO'
+import { useRouter } from 'next/router'
+
+jest.mock('next/router', () => ({
+  useRouter: jest.fn(() => ({ pathname: '/', query: {} }))
+}))
 
 jest.mock('@/lib/config', () => ({
   siteConfig: jest.fn()
@@ -8,7 +13,11 @@ jest.mock('@/lib/config', () => ({
 jest.mock('@/lib/global', () => ({
   useGlobal: () => ({
     locale: {
-      NAV: { ARCHIVE: 'Archive', SEARCH: 'Search', PAGE_NOT_FOUND: 'Not Found' },
+      NAV: {
+        ARCHIVE: 'Archive',
+        SEARCH: 'Search',
+        PAGE_NOT_FOUND: 'Not Found'
+      },
       COMMON: { CATEGORY: 'Category', TAGS: 'Tags' }
     }
   })
@@ -29,7 +38,7 @@ const baseSiteConfig = {
   TITLE: 'Example Blog'
 }
 
-const renderSeo = fontUrl => {
+const renderSeo = (fontUrl, post) => {
   siteConfig.mockImplementation((key, defaultVal) => {
     if (key === 'FONT_URL') return fontUrl
     return Object.prototype.hasOwnProperty.call(baseSiteConfig, key)
@@ -39,6 +48,7 @@ const renderSeo = fontUrl => {
 
   return render(
     <SEO
+      post={post}
       siteInfo={{
         title: 'Example Blog',
         description: 'Example description',
@@ -49,6 +59,45 @@ const renderSeo = fontUrl => {
     />
   )
 }
+
+describe('SEO page descriptions', () => {
+  beforeEach(() => {
+    useRouter.mockReturnValue({ pathname: '/[...slug]', query: {} })
+  })
+
+  afterEach(() => {
+    useRouter.mockReturnValue({ pathname: '/', query: {} })
+  })
+
+  it.each([
+    ['Page', '可用链接/about访问，不会在菜单栏显示', 'Example description'],
+    [
+      'Post',
+      'A reader-facing article summary',
+      'A reader-facing article summary'
+    ]
+  ])(
+    'uses the appropriate description for %s pages',
+    (type, summary, expected) => {
+      const { container } = renderSeo('', {
+        type,
+        title: 'About',
+        slug: 'about',
+        summary
+      })
+      for (const selector of [
+        'meta[name="description"]',
+        'meta[property="og:description"]',
+        'meta[name="twitter:description"]'
+      ]) {
+        expect(container.querySelector(selector)).toHaveAttribute(
+          'content',
+          expected
+        )
+      }
+    }
+  )
+})
 
 describe('SEO structured data', () => {
   const siteInfo = {

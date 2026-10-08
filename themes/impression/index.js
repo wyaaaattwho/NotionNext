@@ -9,6 +9,7 @@ import { useRouter } from 'next/router'
 import { useEffect, useRef, useState } from 'react'
 import CONFIG from './config'
 import { Style } from './style'
+import useImpressionMotion from './useMotion'
 
 const Comment = dynamic(() => import('@/components/Comment'), { ssr: false })
 const ShareBar = dynamic(() => import('@/components/ShareBar'), { ssr: false })
@@ -109,33 +110,19 @@ const LayoutBase = props => {
       ? customMenu
       : customNav || []
 
+  useImpressionMotion(root, router.asPath)
+
   useEffect(() => {
     setMenuOpen(false)
     root.current
       ?.querySelectorAll('details[open]')
       .forEach(el => el.removeAttribute('open'))
-    if (!root.current || !('IntersectionObserver' in window)) return
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
-    const observer = new IntersectionObserver(
-      entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('im-in-view')
-            observer.unobserve(entry.target)
-          }
-        })
-      },
-      { threshold: 0.08 }
-    )
-    root.current
-      .querySelectorAll('[data-reveal]')
-      .forEach(el => observer.observe(el))
-    return () => observer.disconnect()
   }, [router.asPath])
 
   return (
     <div id='theme-impression' ref={root}>
       <Style />
+      <div className='im-reading-progress' aria-hidden='true' />
       <a className='im-skip' href='#im-main'>
         跳至正文
       </a>
@@ -607,21 +594,26 @@ const LayoutSlug = props => {
     )
   return (
     <article
-      className={`im-article im-shell${fullWidth ? ' im-article-wide' : ''}`}
+      className={`im-article im-shell${post.type === 'Page' ? ' im-page' : ''}${post.type === 'Page' && post.slug === 'about' ? ' im-profile' : ''}${fullWidth ? ' im-article-wide' : ''}`}
+      data-page-type={post.type}
     >
       <header className='im-article-header'>
         <SmartLink href='/' className='im-back'>
           ← 返回首页
         </SmartLink>
-        <PostMeta post={post} />
+        {post.type === 'Post' && <PostMeta post={post} />}
         <h1>{post.title}</h1>
-        {post.summary && <p>{post.summary}</p>}
+        {post.type === 'Post' && post.summary && <p>{post.summary}</p>}
       </header>
       <div id='article-wrapper'>
         <NotionPage post={post} />
       </div>
-      <ShareBar post={post} />
-      <AdSlot type='in-article' />
+      {post.type === 'Post' && (
+        <>
+          <ShareBar post={post} />
+          <AdSlot type='in-article' />
+        </>
+      )}
       {post.type === 'Post' && (
         <>
           <nav className='im-adjacent' aria-label='前后文章'>

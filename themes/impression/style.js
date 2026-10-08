@@ -701,25 +701,6 @@ export const Style = () => (
     #theme-impression .im-recommend {
       margin-block: 55px;
     }
-    #theme-impression .im-in-view {
-      animation: im-arrive 0.7s both;
-      animation-delay: var(--im-delay, 0ms);
-    }
-    @keyframes im-arrive {
-      from {
-        opacity: 0.35;
-        transform: translateY(14px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-    @media (min-width: 1000px) and (prefers-reduced-motion: no-preference) {
-      #theme-impression .im-hero-copy {
-        animation: im-arrive 0.9s both;
-      }
-    }
     @media (max-width: 1100px) {
       #theme-impression .im-shell {
         width: calc(100% - 64px);
@@ -889,6 +870,765 @@ export const Style = () => (
         gap: 18px;
       }
     }
+    /* Typography and content layout share one scale across native Notion blocks. */
+    #theme-impression {
+      --im-muted: #626c5b;
+      --im-card: #fffdf7;
+      --im-ease: cubic-bezier(0.22, 1, 0.36, 1);
+      --im-sans:
+        'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans SC',
+        'PingFang SC', sans-serif;
+      font-weight: 400;
+    }
+    .dark #theme-impression {
+      --im-muted: #bbc3b2;
+      --im-card: #2b3329;
+    }
+    #theme-impression:after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 45;
+      opacity: 0.018;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.72' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Cpath fill='%23000' filter='url(%23grain)' opacity='.7' d='M0 0h180v180H0z'/%3E%3C/svg%3E");
+      background-size: 180px;
+    }
+    #theme-impression .im-reading-progress {
+      position: fixed;
+      inset: 0 0 auto;
+      height: 2px;
+      z-index: 60;
+      background: var(--im-green);
+      transform: scaleX(var(--im-progress, 0));
+      transform-origin: left;
+      pointer-events: none;
+    }
+    #theme-impression .im-header {
+      position: sticky;
+      top: 0;
+      min-height: 96px;
+      background: var(--im-paper);
+      transition:
+        min-height 0.4s var(--im-ease),
+        border-color 0.4s;
+      isolation: isolate;
+    }
+    #theme-impression .im-header:before {
+      content: '';
+      position: absolute;
+      inset: 0 calc((100vw - 100%) / -2);
+      background: var(--im-paper);
+      z-index: -1;
+      border-bottom: 1px solid var(--im-line);
+      transition: box-shadow 0.4s;
+    }
+    #theme-impression.im-header-scrolled .im-header {
+      min-height: 76px;
+    }
+    #theme-impression.im-header-scrolled .im-header:before {
+      box-shadow: 0 5px 25px #25301f07;
+    }
+    #theme-impression .im-nav > a,
+    #theme-impression .im-menu-group > summary {
+      position: relative;
+      padding-block: 8px;
+    }
+    #theme-impression .im-nav > a:after,
+    #theme-impression .im-menu-group > summary:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: var(--im-rust);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s var(--im-ease);
+    }
+    #theme-impression .im-nav > a:hover:after,
+    #theme-impression .im-nav > a[aria-current='page']:after,
+    #theme-impression .im-menu-group[open] > summary:after {
+      transform: scaleX(1);
+    }
+    #theme-impression .im-submenu {
+      top: 40px;
+      border-radius: 3px;
+    }
+    #theme-impression .im-menu-group[open] > .im-submenu {
+      animation: im-menu-enter 0.28s var(--im-ease) both;
+    }
+    #theme-impression .im-mode {
+      transition:
+        background 0.3s,
+        transform 0.45s var(--im-ease);
+    }
+    #theme-impression .im-mode:hover {
+      background: var(--im-wash);
+      transform: rotate(12deg);
+    }
+    #theme-impression .im-hero-cover {
+      transform: translate3d(0, var(--im-hero-shift, 0px), 0) scale(1.07);
+    }
+    #theme-impression .im-hero h1 {
+      text-wrap: balance;
+      letter-spacing: -0.025em;
+    }
+    #theme-impression .im-hero .im-eyebrow {
+      animation: im-hero-enter 0.9s 0.08s var(--im-ease) both;
+    }
+    #theme-impression .im-hero h1 span {
+      animation: im-hero-enter 1.05s 0.18s var(--im-ease) both;
+    }
+    #theme-impression .im-hero h1 span:nth-child(2) {
+      animation-delay: 0.3s;
+    }
+    #theme-impression .im-hero-description {
+      animation: im-hero-enter 1s 0.3s var(--im-ease) both;
+    }
+    #theme-impression .im-hero .im-text-link {
+      animation: im-hero-enter 1s 0.42s var(--im-ease) both;
+    }
+    #theme-impression .im-text-link {
+      transition:
+        gap 0.35s var(--im-ease),
+        color 0.25s;
+    }
+    #theme-impression .im-text-link:hover {
+      gap: 32px;
+    }
+    #theme-impression .im-post {
+      transition:
+        border-color 0.3s,
+        transform 0.5s var(--im-ease);
+    }
+    #theme-impression .im-post:hover {
+      border-color: var(--im-green);
+      transform: translateY(-4px);
+    }
+    #theme-impression .im-post-cover {
+      border-radius: 3px;
+    }
+    #theme-impression .im-cover-image {
+      transition-duration: 1.1s;
+    }
+    #theme-impression .im-post:hover .im-cover-image {
+      transform: scale(1.055);
+    }
+    #theme-impression .im-taxonomy-grid a {
+      transition:
+        background 0.4s,
+        border-color 0.4s,
+        transform 0.5s var(--im-ease);
+    }
+    #theme-impression .im-taxonomy-grid a:hover {
+      border-color: var(--im-green);
+      transform: translateY(-4px);
+    }
+    #theme-impression .im-reveal.im-in-view {
+      animation: im-content-enter 0.85s var(--im-ease) backwards;
+      animation-delay: var(--im-reveal-delay, 0ms);
+    }
+    @keyframes im-content-enter {
+      from {
+        opacity: 0.18;
+        transform: translateY(24px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    @keyframes im-hero-enter {
+      from {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    @keyframes im-menu-enter {
+      from {
+        opacity: 0;
+        transform: translateY(-7px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    #theme-impression .im-article {
+      padding-block: 48px 64px;
+    }
+    #theme-impression .im-article-header h1 {
+      font-family: var(--im-sans);
+      font-size: clamp(30px, 3.2vw, 44px);
+      font-weight: 500;
+      line-height: 1.22;
+      letter-spacing: -0.035em;
+      text-wrap: balance;
+    }
+    #theme-impression .im-back {
+      margin-bottom: 26px;
+      font-size: 12px;
+    }
+    #theme-impression .im-article-header {
+      padding-bottom: 28px;
+      margin-bottom: 32px;
+    }
+    #theme-impression .im-article-header > p {
+      font: 16px/1.7 var(--im-sans);
+    }
+    #theme-impression .im-page {
+      max-width: 1040px;
+    }
+    #theme-impression .im-page .im-article-header {
+      padding-bottom: 32px;
+      margin-bottom: 28px;
+    }
+    #theme-impression .im-page .im-article-header h1 {
+      margin-top: 0;
+    }
+    #theme-impression .im-article #notion-article {
+      overflow: visible;
+    }
+    #theme-impression .im-article .notion {
+      font-family: var(--im-sans) !important;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 1.75;
+      color: var(--im-ink);
+      --fg-color-1: var(--im-line);
+      --fg-color-3: var(--im-muted);
+    }
+    #theme-impression .im-article .notion-page {
+      max-width: none;
+      margin: 0;
+      padding: 0;
+    }
+    #theme-impression .im-article .notion-text {
+      font-family: inherit;
+      font-size: inherit;
+      line-height: 1.75 !important;
+      padding: 0 !important;
+      margin: 0 0 12px !important;
+      overflow-wrap: anywhere;
+    }
+    #theme-impression .im-article .notion b,
+    #theme-impression .im-article .notion strong {
+      font-weight: 600;
+    }
+    #theme-impression .im-article .notion .notion-h {
+      font-family: var(--im-sans);
+      font-weight: 550;
+      line-height: 1.35;
+      letter-spacing: -0.02em;
+      margin: 40px 0 18px;
+      padding: 0;
+      scroll-margin-top: 110px;
+    }
+    #theme-impression .im-article .notion .notion-h-title {
+      font-family: inherit;
+      margin: 0;
+      padding: 0;
+      line-height: inherit;
+    }
+    #theme-impression .im-article .notion .notion-h1 {
+      font-size: 28px;
+    }
+    #theme-impression .im-article .notion .notion-h2 {
+      font-size: 25px;
+    }
+    #theme-impression .im-article .notion .notion-h3 {
+      font-size: 23px;
+    }
+    #theme-impression .im-article .notion .notion-h4 {
+      font-size: 21px;
+    }
+    #theme-impression .im-page .notion .notion-h {
+      font-size: 23px;
+      margin-top: 44px;
+    }
+    #theme-impression .im-article .notion-divider {
+      margin: 22px 0;
+      border-bottom: 1px solid var(--im-line);
+    }
+    #theme-impression .im-article .notion-h + .notion-divider {
+      margin: -4px 0 22px;
+    }
+    #theme-impression .im-article .notion-gray {
+      color: var(--im-muted);
+    }
+    #theme-impression .im-article .notion-blue {
+      color: #416773;
+    }
+    .dark #theme-impression .im-article .notion-blue {
+      color: #a0c7d0;
+    }
+    #theme-impression .im-article .notion-link {
+      border-bottom: 1px solid color-mix(in srgb, currentColor 35%, transparent);
+      opacity: 1;
+      transition:
+        color 0.25s,
+        border-color 0.25s;
+      text-underline-offset: 3px;
+    }
+    #theme-impression .im-article .notion-link:hover {
+      color: var(--im-rust);
+      border-color: var(--im-rust);
+    }
+    #theme-impression .im-article .notion-list {
+      line-height: 1.75;
+      margin-block: 12px;
+    }
+    #theme-impression .im-article .notion-list li {
+      padding-block: 3px;
+    }
+    #theme-impression .im-article .notion-quote {
+      border: 0;
+      border-left: 2px solid var(--im-green);
+      border-radius: 0 4px 4px 0;
+      background: var(--im-wash);
+      color: var(--im-ink);
+      font: 16px/1.75 var(--im-sans);
+      padding: 18px 22px;
+      margin-block: 24px;
+    }
+    html.dark #theme-impression .im-article .notion-quote {
+      border: 0 !important;
+      border-left: 2px solid var(--im-green) !important;
+      background: var(--im-wash) !important;
+      color: var(--im-ink) !important;
+    }
+    #theme-impression .im-article .notion-row {
+      min-width: 0;
+      overflow: visible;
+    }
+    #theme-impression .im-article .notion-column {
+      min-width: 0;
+    }
+    #theme-impression .im-article .notion-asset-wrapper-image figcaption {
+      color: var(--im-muted);
+      font: 12px/1.6 var(--im-sans);
+    }
+    #theme-impression .im-article .notion-callout {
+      border: 1px solid var(--im-line);
+      border-radius: 6px;
+      background: var(--im-card);
+      color: var(--im-ink);
+      align-items: flex-start;
+      padding: 22px 24px;
+      margin-block: 16px;
+      box-shadow: 0 4px 20px #22311d04;
+      transition:
+        box-shadow 0.5s var(--im-ease),
+        border-color 0.4s;
+    }
+    #theme-impression .im-article .notion-callout:hover {
+      border-color: color-mix(in srgb, var(--im-green) 45%, var(--im-line));
+      box-shadow: 0 8px 30px #22311d08;
+    }
+    #theme-impression .im-article .notion-callout-text {
+      min-width: 0;
+      flex: 1;
+      white-space: normal;
+      overflow: visible;
+    }
+    #theme-impression .im-article .notion-callout-text .notion-text {
+      line-height: 1.65 !important;
+      margin: 0 0 8px !important;
+    }
+    #theme-impression .im-article .notion-callout-text .notion-text:last-child {
+      margin-bottom: 0 !important;
+    }
+    #theme-impression
+      .im-article
+      .notion-callout
+      .notion-asset-wrapper-image
+      img {
+      filter: none;
+      object-fit: contain !important;
+    }
+    html.dark #theme-impression .im-article .notion-callout {
+      border: 1px solid var(--im-line) !important;
+      background: var(--im-card) !important;
+      color: var(--im-ink) !important;
+      border-radius: 6px;
+    }
+    html.dark
+      #theme-impression
+      .im-article
+      .notion-callout
+      .notion-callout-text,
+    html.dark #theme-impression .im-article .notion-callout .notion-text {
+      color: var(--im-ink) !important;
+    }
+
+    /* Experience cards have a single row; publication cards also include an abstract. */
+    #theme-impression .im-profile .notion-callout-text > .notion-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 220px;
+      gap: 28px;
+      align-items: center;
+    }
+    #theme-impression
+      .im-profile
+      .notion-callout-text
+      > .notion-row
+      > .notion-spacer {
+      display: none;
+    }
+    #theme-impression
+      .im-profile
+      .notion-callout-text
+      > .notion-row
+      > .notion-column {
+      width: auto !important;
+      padding: 0;
+    }
+    #theme-impression
+      .im-profile
+      .notion-callout-text
+      > .notion-row
+      > .notion-column:has(> .notion-blank:only-child) {
+      display: none;
+    }
+    #theme-impression
+      .im-profile
+      .notion-callout-text
+      > .notion-row:only-child {
+      grid-template-columns: 96px minmax(0, 1fr);
+      align-items: start;
+      gap: 24px;
+    }
+    #theme-impression
+      .im-profile
+      .notion-callout-text
+      > .notion-row:only-child
+      .notion-asset-wrapper-image {
+      margin: 0 0 8px;
+      min-width: 0;
+    }
+    #theme-impression
+      .im-profile
+      .notion-callout-text
+      > .notion-row:only-child
+      .notion-asset-wrapper-image
+      > div {
+      width: 96px !important;
+      max-width: 96px !important;
+      height: auto !important;
+    }
+    #theme-impression
+      .im-profile
+      .notion-callout-text
+      > .notion-row:only-child
+      .notion-asset-wrapper-image
+      img {
+      width: auto;
+      max-width: 96px;
+      max-height: 84px;
+      height: auto !important;
+      margin-inline: auto;
+    }
+    #theme-impression
+      .im-profile
+      .notion-callout-text
+      > .notion-row:only-child
+      .notion-column:has(> .notion-text) {
+      font-size: 15px;
+    }
+    #theme-impression
+      .im-profile
+      .notion-callout-text
+      > .notion-row:only-child
+      .notion-column:has(> .notion-text)
+      > .notion-text:first-child {
+      font-size: 16px;
+    }
+    #theme-impression
+      .im-profile
+      .notion-callout-text
+      > .notion-row:not(:only-child) {
+      margin-bottom: 18px;
+    }
+    #theme-impression
+      .im-profile
+      .notion-callout-text
+      > .notion-row:not(:only-child)
+      .notion-text {
+      font-size: 16px;
+      line-height: 1.6 !important;
+    }
+    #theme-impression
+      .im-profile
+      .notion-callout-text
+      > .notion-row:not(:only-child)
+      .notion-list {
+      font-size: 14px;
+      line-height: 1.6;
+      margin-block: 0 8px;
+    }
+    #theme-impression
+      .im-profile
+      .notion-callout-text
+      > .notion-row:not(:only-child)
+      .notion-asset-wrapper-image {
+      min-width: 0;
+      margin: 0;
+    }
+    #theme-impression
+      .im-profile
+      .notion-callout-text
+      > .notion-row:not(:only-child)
+      .notion-asset-wrapper-image
+      > div {
+      width: 100% !important;
+      max-width: 220px !important;
+      height: auto !important;
+    }
+    #theme-impression
+      .im-profile
+      .notion-callout-text
+      > .notion-row:not(:only-child)
+      .notion-asset-wrapper-image
+      img {
+      max-height: 150px;
+      height: auto !important;
+    }
+    #theme-impression .im-profile .notion-callout-text > .notion-text {
+      font-size: 15px;
+    }
+    #theme-impression
+      .im-profile
+      .notion-page
+      > .notion-row:not(.notion-row ~ .notion-row) {
+      gap: 40px;
+      align-items: center;
+      margin-bottom: 32px;
+    }
+    #theme-impression
+      .im-profile
+      .notion-page
+      > .notion-row:not(.notion-row ~ .notion-row)
+      > .notion-spacer {
+      display: none;
+    }
+    #theme-impression
+      .im-profile
+      .notion-page
+      > .notion-row:not(.notion-row ~ .notion-row)
+      > .notion-column:first-child {
+      width: 210px !important;
+      flex: 0 0 210px;
+    }
+    #theme-impression
+      .im-profile
+      .notion-page
+      > .notion-row:not(.notion-row ~ .notion-row)
+      > .notion-column:not(:first-child) {
+      width: auto !important;
+      flex: 1;
+    }
+    #theme-impression
+      .im-profile
+      .notion-page
+      > .notion-row:not(.notion-row ~ .notion-row)
+      .notion-asset-wrapper-image {
+      min-width: 0;
+      margin: 0;
+    }
+    #theme-impression
+      .im-profile
+      .notion-page
+      > .notion-row:not(.notion-row ~ .notion-row)
+      .notion-asset-wrapper-image
+      > div {
+      width: 210px !important;
+      max-width: 100%;
+    }
+    #theme-impression
+      .im-profile
+      .notion-page
+      > .notion-row:not(.notion-row ~ .notion-row)
+      img {
+      border-radius: 5px;
+    }
+    #theme-impression
+      .im-profile
+      .notion-page
+      > .notion-row:not(.notion-row ~ .notion-row)
+      .notion-h {
+      margin-top: 0;
+    }
+    @media (max-width: 800px) {
+      #theme-impression .im-header {
+        min-height: 80px;
+      }
+      #theme-impression.im-header-scrolled .im-header {
+        min-height: 72px;
+      }
+      #theme-impression .im-nav {
+        top: 79px;
+      }
+      #theme-impression.im-header-scrolled .im-nav {
+        top: 71px;
+      }
+      #theme-impression .im-nav-open {
+        animation: im-menu-enter 0.3s var(--im-ease) both;
+      }
+      #theme-impression .im-profile .notion-callout-text > .notion-row {
+        grid-template-columns: minmax(0, 1fr) 160px;
+        gap: 20px;
+      }
+      #theme-impression
+        .im-profile
+        .notion-callout-text
+        > .notion-row:only-child {
+        grid-template-columns: 80px minmax(0, 1fr);
+      }
+      #theme-impression
+        .im-profile
+        .notion-callout-text
+        > .notion-row:only-child
+        .notion-asset-wrapper-image
+        > div {
+        width: 80px !important;
+        max-width: 80px !important;
+      }
+      #theme-impression
+        .im-profile
+        .notion-callout-text
+        > .notion-row:only-child
+        .notion-asset-wrapper-image
+        img {
+        max-width: 80px;
+        max-height: 72px;
+      }
+    }
+    @media (max-width: 600px) {
+      #theme-impression .im-article {
+        padding-top: 30px;
+      }
+      #theme-impression .im-article-header h1 {
+        font-size: 32px;
+      }
+      #theme-impression .im-article .notion {
+        font-size: 15px;
+      }
+      #theme-impression .im-profile .notion .notion-h {
+        font-size: 21px;
+        margin-top: 34px;
+      }
+      #theme-impression .im-article .notion-callout {
+        padding: 18px 16px;
+      }
+      #theme-impression .im-profile .notion-callout-text > .notion-row {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 18px;
+      }
+      #theme-impression
+        .im-profile
+        .notion-callout-text
+        > .notion-row:only-child {
+        grid-template-columns: 64px minmax(0, 1fr);
+        gap: 14px;
+      }
+      #theme-impression
+        .im-profile
+        .notion-callout-text
+        > .notion-row:only-child
+        .notion-asset-wrapper-image
+        > div {
+        width: 64px !important;
+        max-width: 64px !important;
+      }
+      #theme-impression
+        .im-profile
+        .notion-callout-text
+        > .notion-row:only-child
+        .notion-asset-wrapper-image
+        img {
+        max-width: 64px;
+        max-height: 58px;
+      }
+      #theme-impression
+        .im-profile
+        .notion-callout-text
+        > .notion-row:only-child
+        .notion-column:has(> .notion-text) {
+        font-size: 14px;
+      }
+      #theme-impression
+        .im-profile
+        .notion-callout-text
+        > .notion-row:only-child
+        .notion-column:has(> .notion-text)
+        > .notion-text:first-child {
+        font-size: 15px;
+      }
+      #theme-impression
+        .im-profile
+        .notion-callout-text
+        > .notion-row:not(:only-child)
+        .notion-asset-wrapper-image
+        > div {
+        max-width: 100% !important;
+      }
+      #theme-impression
+        .im-profile
+        .notion-callout-text
+        > .notion-row:not(:only-child)
+        .notion-asset-wrapper-image
+        img {
+        max-height: 210px;
+      }
+      #theme-impression
+        .im-profile
+        .notion-page
+        > .notion-row:not(.notion-row ~ .notion-row) {
+        gap: 24px;
+        align-items: stretch;
+      }
+      #theme-impression
+        .im-profile
+        .notion-page
+        > .notion-row:not(.notion-row ~ .notion-row)
+        > .notion-column:first-child {
+        flex: initial;
+        width: 100% !important;
+      }
+      #theme-impression
+        .im-profile
+        .notion-page
+        > .notion-row:not(.notion-row ~ .notion-row)
+        .notion-asset-wrapper-image
+        > div {
+        width: 160px !important;
+      }
+      #theme-impression
+        .im-profile
+        .notion-page
+        > .notion-row:not(.notion-row ~ .notion-row)
+        > .notion-column:not(:first-child) {
+        flex: initial;
+        width: 100% !important;
+      }
+    }
+    @media (pointer: coarse), (max-width: 800px) {
+      #theme-impression .im-hero-cover {
+        transform: none;
+      }
+      #theme-impression .im-post:hover,
+      #theme-impression .im-taxonomy-grid a:hover {
+        transform: none;
+      }
+    }
+
     @media (prefers-reduced-motion: reduce) {
       #theme-impression *,
       #theme-impression *:before,
@@ -896,6 +1636,13 @@ export const Style = () => (
         animation: none !important;
         transition: none !important;
         scroll-behavior: auto !important;
+      }
+      #theme-impression .im-hero-cover {
+        transform: none;
+      }
+      #theme-impression .im-post:hover,
+      #theme-impression .im-taxonomy-grid a:hover {
+        transform: none;
       }
       #theme-impression .im-post:hover .im-cover-image,
       #theme-impression .im-brand:hover .im-brand-flower {
