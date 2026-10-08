@@ -244,16 +244,13 @@ export const ProfileStyle = () => (
       justify-content: center;
       gap: 10px;
       padding: 22px;
-      background: #f0f0e6;
+      background: #fff;
+      --im-muted: #626c5b;
       border-bottom: 1px solid var(--im-line);
     }
     #theme-impression .im-project-art {
       height: 270px;
       padding: 20px;
-    }
-    .dark #theme-impression .im-paper-art,
-    .dark #theme-impression .im-project-art {
-      background: #384032;
     }
     #theme-impression .im-paper-art .im-profile-figure,
     #theme-impression .im-project-art .im-profile-figure {
