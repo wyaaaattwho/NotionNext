@@ -8,10 +8,10 @@ export const Style = () => (
       --im-green: #596c50;
       --im-wash: #e9ecdf;
       --im-rust: #a55f47;
-      --im-serif: 'Noto Serif SC', 'Songti SC', 'STSong', Georgia, serif;
-      --im-sans:
-        -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans SC',
-        sans-serif;
+      --im-serif:
+        'Impression Newsreader', 'Impression Noto Serif SC', 'Songti SC',
+        'STSong', Georgia, serif;
+      --im-sans: var(--im-serif);
       min-height: 100vh;
       background: var(--im-paper);
       color: var(--im-ink);
@@ -79,15 +79,13 @@ export const Style = () => (
       align-items: center;
       gap: 11px;
       flex-shrink: 0;
-      font:
-        25px Georgia,
-        serif;
+      font: 27px var(--im-serif);
       letter-spacing: -0.8px;
     }
     #theme-impression .im-brand small {
       display: block;
       margin-top: 9px;
-      font: 9px var(--im-sans);
+      font: 11px var(--im-serif);
       letter-spacing: 2.1px;
       color: var(--im-muted);
     }
@@ -104,7 +102,7 @@ export const Style = () => (
       display: flex;
       align-items: center;
       gap: 28px;
-      font-size: 13px;
+      font-size: 15px;
     }
     #theme-impression .im-nav a,
     #theme-impression .im-nav summary {
@@ -202,7 +200,7 @@ export const Style = () => (
       border-color: #faf8f1;
     }
     #theme-impression .im-eyebrow {
-      font: 10px var(--im-sans);
+      font: 13px var(--im-serif);
       letter-spacing: 2px;
       font-weight: 500;
       color: var(--im-muted);
@@ -244,7 +242,7 @@ export const Style = () => (
       gap: 25px;
       padding-bottom: 8px;
       border-bottom: 1px solid var(--im-ink);
-      font-size: 12px;
+      font-size: 14px;
     }
     #theme-impression .im-arrow {
       display: inline-block;
@@ -265,7 +263,7 @@ export const Style = () => (
       display: flex;
       align-items: center;
       justify-content: space-between;
-      font-size: 12px;
+      font-size: 14px;
       cursor: pointer;
       list-style: none;
       color: var(--im-muted);
@@ -307,7 +305,7 @@ export const Style = () => (
       margin-block: 28px 32px;
       padding-block: 16px;
       border-block: 1px solid var(--im-line);
-      font-size: 12px;
+      font-size: 14px;
       color: var(--im-muted);
     }
     #theme-impression .im-categories a {
@@ -320,7 +318,7 @@ export const Style = () => (
       color: var(--im-rust);
     }
     #theme-impression .im-categories small {
-      font-size: 9px;
+      font-size: 14px;
       opacity: 0.75;
     }
     #theme-impression .im-post-grid {
@@ -365,7 +363,7 @@ export const Style = () => (
       gap: 15px;
       align-items: center;
       color: var(--im-muted);
-      font-size: 10px;
+      font-size: 15px;
       letter-spacing: 0.3px;
     }
     #theme-impression .im-category {
@@ -394,8 +392,8 @@ export const Style = () => (
     }
     #theme-impression .im-summary {
       color: var(--im-muted);
-      font-size: 13px;
-      line-height: 2;
+      font-size: 18px;
+      line-height: 1.65;
       display: -webkit-box;
       -webkit-line-clamp: 3;
       -webkit-box-orient: vertical;
@@ -412,7 +410,7 @@ export const Style = () => (
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
-      font-size: 9px;
+      font-size: 14px;
       color: var(--im-muted);
     }
     #theme-impression .im-tags a:before {
@@ -424,7 +422,7 @@ export const Style = () => (
       align-items: center;
       gap: 10px;
       white-space: nowrap;
-      font-size: 11px;
+      font-size: 14px;
       color: var(--im-green);
     }
     #theme-impression .im-featured {
@@ -470,7 +468,7 @@ export const Style = () => (
       border-top: 1px solid var(--im-line);
       margin-top: 55px;
       padding-top: 24px;
-      font-size: 12px;
+      font-size: 14px;
       color: var(--im-muted);
     }
     #theme-impression .im-load-more {
@@ -481,7 +479,7 @@ export const Style = () => (
       padding: 14px 30px;
       background: transparent;
       border: 1px solid var(--im-line);
-      font-size: 12px;
+      font-size: 14px;
     }
     #theme-impression .im-footer {
       border-top: 1px solid var(--im-line);
@@ -491,7 +489,7 @@ export const Style = () => (
       display: flex;
       justify-content: space-between;
       gap: 20px;
-      font-size: 10px;
+      font-size: 15px;
       color: var(--im-muted);
       line-height: 1.7;
     }
@@ -501,7 +499,7 @@ export const Style = () => (
     }
     #theme-impression .im-filing {
       display: block;
-      font-size: 10px;
+      font-size: 15px;
       color: var(--im-muted);
       margin-top: 15px;
     }
@@ -542,7 +540,7 @@ export const Style = () => (
       gap: 20px;
       background: transparent;
       border: 0;
-      font-size: 12px;
+      font-size: 14px;
     }
     #theme-impression .im-archive-group {
       display: grid;
@@ -558,7 +556,7 @@ export const Style = () => (
     #theme-impression .im-archive-group h2 small {
       display: block;
       margin-top: 12px;
-      font: 11px var(--im-sans);
+      font: 14px var(--im-serif);
       color: var(--im-muted);
     }
     #theme-impression .im-archive-group a {
@@ -573,7 +571,7 @@ export const Style = () => (
     }
     #theme-impression .im-archive-group time {
       flex-shrink: 0;
-      font: 11px var(--im-sans);
+      font: 14px var(--im-serif);
       color: var(--im-muted);
     }
     #theme-impression .im-taxonomy-grid {
@@ -596,7 +594,7 @@ export const Style = () => (
     }
     #theme-impression .im-taxonomy-grid a > span {
       color: var(--im-muted);
-      font-size: 11px;
+      font-size: 14px;
     }
     #theme-impression .im-taxonomy-grid .im-arrow {
       float: right;
@@ -626,7 +624,7 @@ export const Style = () => (
     }
     #theme-impression .im-back {
       display: inline-block;
-      font-size: 11px;
+      font-size: 14px;
       color: var(--im-muted);
       margin-bottom: 45px;
     }
@@ -691,7 +689,7 @@ export const Style = () => (
     #theme-impression .im-adjacent small {
       display: block;
       color: var(--im-muted);
-      font: 10px var(--im-sans);
+      font: 13px var(--im-serif);
       margin-bottom: 14px;
     }
     #theme-impression .im-recommend > h2 {
@@ -707,7 +705,7 @@ export const Style = () => (
       }
       #theme-impression .im-nav {
         gap: 17px;
-        font-size: 12px;
+        font-size: 14px;
       }
       #theme-impression .im-hero {
         min-height: 570px;
@@ -729,7 +727,7 @@ export const Style = () => (
         gap: 10px;
         background: transparent;
         border: 0;
-        font-size: 12px;
+        font-size: 14px;
       }
       #theme-impression .im-nav {
         display: none;
@@ -788,7 +786,7 @@ export const Style = () => (
         margin-block: 22px 24px;
       }
       #theme-impression .im-hero-description {
-        font-size: 13px;
+        font-size: 15px;
       }
       #theme-impression .im-journal {
         padding-top: 40px;
@@ -797,12 +795,12 @@ export const Style = () => (
         font-size: 28px;
       }
       #theme-impression .im-section-heading > a {
-        font-size: 10px;
+        font-size: 15px;
         gap: 10px;
       }
       #theme-impression .im-categories {
         gap: 18px;
-        font-size: 11px;
+        font-size: 14px;
       }
       #theme-impression .im-featured {
         grid-template-columns: 1fr;
@@ -848,7 +846,7 @@ export const Style = () => (
         font-size: 15px;
       }
       #theme-impression .im-archive-group time {
-        font-size: 9px;
+        font-size: 14px;
       }
       #theme-impression .im-taxonomy-grid {
         gap: 15px;
@@ -875,10 +873,9 @@ export const Style = () => (
       --im-muted: #626c5b;
       --im-card: #fffdf7;
       --im-ease: cubic-bezier(0.22, 1, 0.36, 1);
-      --im-sans:
-        'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans SC',
-        'PingFang SC', sans-serif;
-      font-weight: 400;
+      --im-sans: var(--im-serif);
+      font-weight: 450;
+      font-optical-sizing: auto;
     }
     .dark #theme-impression {
       --im-muted: #bbc3b2;
@@ -1074,14 +1071,14 @@ export const Style = () => (
     }
     #theme-impression .im-back {
       margin-bottom: 26px;
-      font-size: 12px;
+      font-size: 14px;
     }
     #theme-impression .im-article-header {
       padding-bottom: 28px;
       margin-bottom: 32px;
     }
     #theme-impression .im-article-header > p {
-      font: 16px/1.7 var(--im-sans);
+      font: 18px/1.7 var(--im-serif);
     }
     #theme-impression .im-page {
       max-width: 1040px;
@@ -1098,9 +1095,9 @@ export const Style = () => (
     }
     #theme-impression .im-article .notion {
       font-family: var(--im-sans) !important;
-      font-size: 16px;
-      font-weight: 400;
-      line-height: 1.75;
+      font-size: 18px;
+      font-weight: 450;
+      line-height: 1.7;
       color: var(--im-ink);
       --fg-color-1: var(--im-line);
       --fg-color-3: var(--im-muted);
@@ -1194,7 +1191,7 @@ export const Style = () => (
       border-radius: 0 4px 4px 0;
       background: var(--im-wash);
       color: var(--im-ink);
-      font: 16px/1.75 var(--im-sans);
+      font: 18px/1.7 var(--im-serif);
       padding: 18px 22px;
       margin-block: 24px;
     }
@@ -1267,204 +1264,6 @@ export const Style = () => (
     html.dark #theme-impression .im-article .notion-callout .notion-text {
       color: var(--im-ink) !important;
     }
-
-    /* Experience cards have a single row; publication cards also include an abstract. */
-    #theme-impression .im-profile .notion-callout-text > .notion-row {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) 220px;
-      gap: 28px;
-      align-items: center;
-    }
-    #theme-impression
-      .im-profile
-      .notion-callout-text
-      > .notion-row
-      > .notion-spacer {
-      display: none;
-    }
-    #theme-impression
-      .im-profile
-      .notion-callout-text
-      > .notion-row
-      > .notion-column {
-      width: auto !important;
-      padding: 0;
-    }
-    #theme-impression
-      .im-profile
-      .notion-callout-text
-      > .notion-row
-      > .notion-column:has(> .notion-blank:only-child) {
-      display: none;
-    }
-    #theme-impression
-      .im-profile
-      .notion-callout-text
-      > .notion-row:only-child {
-      grid-template-columns: 96px minmax(0, 1fr);
-      align-items: start;
-      gap: 24px;
-    }
-    #theme-impression
-      .im-profile
-      .notion-callout-text
-      > .notion-row:only-child
-      .notion-asset-wrapper-image {
-      margin: 0 0 8px;
-      min-width: 0;
-    }
-    #theme-impression
-      .im-profile
-      .notion-callout-text
-      > .notion-row:only-child
-      .notion-asset-wrapper-image
-      > div {
-      width: 96px !important;
-      max-width: 96px !important;
-      height: auto !important;
-    }
-    #theme-impression
-      .im-profile
-      .notion-callout-text
-      > .notion-row:only-child
-      .notion-asset-wrapper-image
-      img {
-      width: auto;
-      max-width: 96px;
-      max-height: 84px;
-      height: auto !important;
-      margin-inline: auto;
-    }
-    #theme-impression
-      .im-profile
-      .notion-callout-text
-      > .notion-row:only-child
-      .notion-column:has(> .notion-text) {
-      font-size: 15px;
-    }
-    #theme-impression
-      .im-profile
-      .notion-callout-text
-      > .notion-row:only-child
-      .notion-column:has(> .notion-text)
-      > .notion-text:first-child {
-      font-size: 16px;
-    }
-    #theme-impression
-      .im-profile
-      .notion-callout-text
-      > .notion-row:not(:only-child) {
-      margin-bottom: 18px;
-    }
-    #theme-impression
-      .im-profile
-      .notion-callout-text
-      > .notion-row:not(:only-child)
-      .notion-text {
-      font-size: 16px;
-      line-height: 1.6 !important;
-    }
-    #theme-impression
-      .im-profile
-      .notion-callout-text
-      > .notion-row:not(:only-child)
-      .notion-list {
-      font-size: 14px;
-      line-height: 1.6;
-      margin-block: 0 8px;
-    }
-    #theme-impression
-      .im-profile
-      .notion-callout-text
-      > .notion-row:not(:only-child)
-      .notion-asset-wrapper-image {
-      min-width: 0;
-      margin: 0;
-    }
-    #theme-impression
-      .im-profile
-      .notion-callout-text
-      > .notion-row:not(:only-child)
-      .notion-asset-wrapper-image
-      > div {
-      width: 100% !important;
-      max-width: 220px !important;
-      height: auto !important;
-    }
-    #theme-impression
-      .im-profile
-      .notion-callout-text
-      > .notion-row:not(:only-child)
-      .notion-asset-wrapper-image
-      img {
-      max-height: 150px;
-      height: auto !important;
-    }
-    #theme-impression .im-profile .notion-callout-text > .notion-text {
-      font-size: 15px;
-    }
-    #theme-impression
-      .im-profile
-      .notion-page
-      > .notion-row:not(.notion-row ~ .notion-row) {
-      gap: 40px;
-      align-items: center;
-      margin-bottom: 32px;
-    }
-    #theme-impression
-      .im-profile
-      .notion-page
-      > .notion-row:not(.notion-row ~ .notion-row)
-      > .notion-spacer {
-      display: none;
-    }
-    #theme-impression
-      .im-profile
-      .notion-page
-      > .notion-row:not(.notion-row ~ .notion-row)
-      > .notion-column:first-child {
-      width: 210px !important;
-      flex: 0 0 210px;
-    }
-    #theme-impression
-      .im-profile
-      .notion-page
-      > .notion-row:not(.notion-row ~ .notion-row)
-      > .notion-column:not(:first-child) {
-      width: auto !important;
-      flex: 1;
-    }
-    #theme-impression
-      .im-profile
-      .notion-page
-      > .notion-row:not(.notion-row ~ .notion-row)
-      .notion-asset-wrapper-image {
-      min-width: 0;
-      margin: 0;
-    }
-    #theme-impression
-      .im-profile
-      .notion-page
-      > .notion-row:not(.notion-row ~ .notion-row)
-      .notion-asset-wrapper-image
-      > div {
-      width: 210px !important;
-      max-width: 100%;
-    }
-    #theme-impression
-      .im-profile
-      .notion-page
-      > .notion-row:not(.notion-row ~ .notion-row)
-      img {
-      border-radius: 5px;
-    }
-    #theme-impression
-      .im-profile
-      .notion-page
-      > .notion-row:not(.notion-row ~ .notion-row)
-      .notion-h {
-      margin-top: 0;
-    }
     @media (max-width: 800px) {
       #theme-impression .im-header {
         min-height: 80px;
@@ -1481,34 +1280,6 @@ export const Style = () => (
       #theme-impression .im-nav-open {
         animation: im-menu-enter 0.3s var(--im-ease) both;
       }
-      #theme-impression .im-profile .notion-callout-text > .notion-row {
-        grid-template-columns: minmax(0, 1fr) 160px;
-        gap: 20px;
-      }
-      #theme-impression
-        .im-profile
-        .notion-callout-text
-        > .notion-row:only-child {
-        grid-template-columns: 80px minmax(0, 1fr);
-      }
-      #theme-impression
-        .im-profile
-        .notion-callout-text
-        > .notion-row:only-child
-        .notion-asset-wrapper-image
-        > div {
-        width: 80px !important;
-        max-width: 80px !important;
-      }
-      #theme-impression
-        .im-profile
-        .notion-callout-text
-        > .notion-row:only-child
-        .notion-asset-wrapper-image
-        img {
-        max-width: 80px;
-        max-height: 72px;
-      }
     }
     @media (max-width: 600px) {
       #theme-impression .im-article {
@@ -1518,105 +1289,10 @@ export const Style = () => (
         font-size: 32px;
       }
       #theme-impression .im-article .notion {
-        font-size: 15px;
-      }
-      #theme-impression .im-profile .notion .notion-h {
-        font-size: 21px;
-        margin-top: 34px;
+        font-size: 17px;
       }
       #theme-impression .im-article .notion-callout {
         padding: 18px 16px;
-      }
-      #theme-impression .im-profile .notion-callout-text > .notion-row {
-        grid-template-columns: minmax(0, 1fr);
-        gap: 18px;
-      }
-      #theme-impression
-        .im-profile
-        .notion-callout-text
-        > .notion-row:only-child {
-        grid-template-columns: 64px minmax(0, 1fr);
-        gap: 14px;
-      }
-      #theme-impression
-        .im-profile
-        .notion-callout-text
-        > .notion-row:only-child
-        .notion-asset-wrapper-image
-        > div {
-        width: 64px !important;
-        max-width: 64px !important;
-      }
-      #theme-impression
-        .im-profile
-        .notion-callout-text
-        > .notion-row:only-child
-        .notion-asset-wrapper-image
-        img {
-        max-width: 64px;
-        max-height: 58px;
-      }
-      #theme-impression
-        .im-profile
-        .notion-callout-text
-        > .notion-row:only-child
-        .notion-column:has(> .notion-text) {
-        font-size: 14px;
-      }
-      #theme-impression
-        .im-profile
-        .notion-callout-text
-        > .notion-row:only-child
-        .notion-column:has(> .notion-text)
-        > .notion-text:first-child {
-        font-size: 15px;
-      }
-      #theme-impression
-        .im-profile
-        .notion-callout-text
-        > .notion-row:not(:only-child)
-        .notion-asset-wrapper-image
-        > div {
-        max-width: 100% !important;
-      }
-      #theme-impression
-        .im-profile
-        .notion-callout-text
-        > .notion-row:not(:only-child)
-        .notion-asset-wrapper-image
-        img {
-        max-height: 210px;
-      }
-      #theme-impression
-        .im-profile
-        .notion-page
-        > .notion-row:not(.notion-row ~ .notion-row) {
-        gap: 24px;
-        align-items: stretch;
-      }
-      #theme-impression
-        .im-profile
-        .notion-page
-        > .notion-row:not(.notion-row ~ .notion-row)
-        > .notion-column:first-child {
-        flex: initial;
-        width: 100% !important;
-      }
-      #theme-impression
-        .im-profile
-        .notion-page
-        > .notion-row:not(.notion-row ~ .notion-row)
-        .notion-asset-wrapper-image
-        > div {
-        width: 160px !important;
-      }
-      #theme-impression
-        .im-profile
-        .notion-page
-        > .notion-row:not(.notion-row ~ .notion-row)
-        > .notion-column:not(:first-child) {
-        flex: initial;
-        width: 100% !important;
       }
     }
     @media (pointer: coarse), (max-width: 800px) {
@@ -1629,6 +1305,38 @@ export const Style = () => (
       }
     }
 
+    @media (max-width: 600px) {
+      #theme-impression .im-header {
+        gap: 12px;
+      }
+      #theme-impression .im-brand {
+        min-width: 0;
+        flex-shrink: 1;
+        font-size: 24px;
+      }
+      #theme-impression .im-brand > span {
+        min-width: 0;
+      }
+      #theme-impression .im-brand small {
+        font-size: 9px;
+        letter-spacing: 1px;
+        white-space: nowrap;
+      }
+      #theme-impression .im-brand-flower {
+        width: 32px;
+        height: 42px;
+        flex-shrink: 0;
+      }
+      #theme-impression .im-menu-toggle {
+        flex-shrink: 0;
+        white-space: nowrap;
+      }
+    }
+    @media (max-width: 360px) {
+      #theme-impression .im-brand small {
+        display: none;
+      }
+    }
     @media (prefers-reduced-motion: reduce) {
       #theme-impression *,
       #theme-impression *:before,

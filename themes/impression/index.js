@@ -5,14 +5,17 @@ import { AdSlot } from '@/components/GoogleAdsense'
 import { siteConfig } from '@/lib/config'
 import { useGlobal } from '@/lib/global'
 import dynamic from 'next/dynamic'
+import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { useEffect, useRef, useState } from 'react'
 import CONFIG from './config'
 import { Style } from './style'
 import useImpressionMotion from './useMotion'
+import { NEWSREADER_LATIN_PRELOAD, StyleFonts } from './fonts'
 
 const Comment = dynamic(() => import('@/components/Comment'), { ssr: false })
 const ShareBar = dynamic(() => import('@/components/ShareBar'), { ssr: false })
+const ProfilePage = dynamic(() => import('./Profile'))
 const ArticleLock = dynamic(() => import('../simple/components/ArticleLock'), {
   ssr: false
 })
@@ -121,6 +124,16 @@ const LayoutBase = props => {
 
   return (
     <div id='theme-impression' ref={root}>
+      <Head>
+        <link
+          rel='preload'
+          href={NEWSREADER_LATIN_PRELOAD}
+          as='font'
+          type='font/woff2'
+          crossOrigin='anonymous'
+        />
+      </Head>
+      <StyleFonts />
       <Style />
       <div className='im-reading-progress' aria-hidden='true' />
       <a className='im-skip' href='#im-main'>
@@ -592,6 +605,16 @@ const LayoutSlug = props => {
         正在加载文章…
       </div>
     )
+  if (post.type === 'Page' && post.slug === 'about' && post.blockMap?.block) {
+    return (
+      <>
+        <ProfilePage post={post} />
+        <div className='im-shell im-profile-comments'>
+          <Comment frontMatter={post} />
+        </div>
+      </>
+    )
+  }
   return (
     <article
       className={`im-article im-shell${post.type === 'Page' ? ' im-page' : ''}${post.type === 'Page' && post.slug === 'about' ? ' im-profile' : ''}${fullWidth ? ' im-article-wide' : ''}`}
