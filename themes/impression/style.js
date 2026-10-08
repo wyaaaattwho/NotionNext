@@ -170,13 +170,16 @@ export const Style = () => (
       top: 12px;
     }
     #theme-impression .im-hero {
+      --im-ink: #2e352e;
+      --im-muted: #626c5b;
+      --im-rust: #a55f47;
       position: relative;
       display: flex;
       align-items: center;
-      min-height: min(720px, calc(100svh - 110px));
-      padding-block: 90px;
-      background: #293c38;
-      color: #faf8f1;
+      min-height: min(880px, calc(100svh - 96px));
+      padding-block: 96px 112px;
+      background: #f8f6ef;
+      color: var(--im-ink);
       isolation: isolate;
       overflow: hidden;
     }
@@ -187,26 +190,45 @@ export const Style = () => (
       height: 100%;
       object-fit: cover;
       object-position: center;
-      filter: saturate(0.85) sepia(0.06);
+      filter: none;
       z-index: -2;
     }
-    #theme-impression .im-hero:before {
+    #theme-impression .im-hero:after {
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(
-        90deg,
-        rgba(16, 25, 24, 0.76),
-        rgba(16, 25, 24, 0.46) 60%,
-        rgba(16, 25, 24, 0.25)
-      );
-      z-index: -1;
+      background: linear-gradient(0deg, var(--im-paper), transparent 110px);
+      pointer-events: none;
+      z-index: 0;
     }
     #theme-impression .im-hero .im-eyebrow {
-      color: #e2e6d9;
+      color: var(--im-muted);
     }
     #theme-impression .im-hero .im-text-link {
-      border-color: #faf8f1;
+      border: 0;
+      padding: 0;
+      gap: 14px;
+      font-size: 15px;
+      color: var(--im-muted);
+    }
+    #theme-impression .im-hero-scroll {
+      display: grid;
+      place-items: center;
+      width: 36px;
+      height: 36px;
+      border: 1px solid #909b8580;
+      border-radius: 50%;
+      color: var(--im-ink);
+      font-size: 21px;
+      transition: transform 0.4s var(--im-ease), background 0.3s;
+    }
+    #theme-impression .im-hero .im-text-link:hover {
+      gap: 14px;
+      color: var(--im-ink);
+    }
+    #theme-impression .im-hero .im-text-link:hover .im-hero-scroll {
+      transform: translateY(4px);
+      background: #f8f6efb3;
     }
     #theme-impression .im-eyebrow {
       font: 13px var(--im-serif);
@@ -217,7 +239,8 @@ export const Style = () => (
     #theme-impression .im-hero-copy {
       position: relative;
       z-index: 1;
-      padding-block: 15px;
+      width: min(1050px, calc(100% - 112px));
+      text-align: center;
     }
     #theme-impression .im-dot {
       display: inline-block;
@@ -229,21 +252,20 @@ export const Style = () => (
       vertical-align: middle;
     }
     #theme-impression .im-hero h1 {
-      font-size: clamp(36px, 5vw, 72px);
-      line-height: 1.18;
-      max-width: 930px;
+      font-size: clamp(46px, 6.5vw, 94px);
+      line-height: 1.06;
       letter-spacing: -0.035em;
-      margin: 26px 0 24px;
+      margin: 28px auto 26px;
     }
     #theme-impression .im-hero h1 span {
       display: block;
     }
     #theme-impression .im-hero-description {
       max-width: 600px;
-      font-size: 15px;
-      line-height: 2;
-      color: #e2e6d9;
-      margin-bottom: 31px;
+      font-size: clamp(17px, 1.5vw, 21px);
+      line-height: 1.7;
+      color: var(--im-muted);
+      margin: 0 auto 30px;
     }
     #theme-impression .im-text-link {
       display: inline-flex;
@@ -292,7 +314,7 @@ export const Style = () => (
     }
     #theme-impression .im-journal {
       padding-block: 32px 45px;
-      scroll-margin-top: 32px;
+      scroll-margin-top: 112px;
     }
     #theme-impression .im-section-heading {
       display: flex;
@@ -716,9 +738,6 @@ export const Style = () => (
         gap: 17px;
         font-size: 14px;
       }
-      #theme-impression .im-hero {
-        min-height: 570px;
-      }
       #theme-impression .im-post-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
@@ -763,10 +782,28 @@ export const Style = () => (
         box-shadow: none;
       }
       #theme-impression .im-hero {
-        padding-block: 70px;
+        flex-direction: column;
+        min-height: 0;
+        padding: 60px 0 0;
+      }
+      #theme-impression .im-hero-copy {
+        order: 1;
+        width: calc(100% - 64px);
+        margin-bottom: 48px;
+      }
+      #theme-impression .im-hero-cover {
+        order: 2;
+        position: relative;
+        inset: auto;
+        width: 100%;
+        height: auto;
+        z-index: 0;
       }
       #theme-impression .im-hero h1 {
-        font-size: 48px;
+        font-size: clamp(44px, 8vw, 64px);
+      }
+      #theme-impression .im-hero:after {
+        z-index: 1;
       }
       #theme-impression .im-featured {
         gap: 25px;
@@ -787,15 +824,21 @@ export const Style = () => (
         width: calc(100% - 40px);
       }
       #theme-impression .im-hero {
-        min-height: 540px;
-        padding-block: 64px;
+        padding-top: 48px;
+      }
+      #theme-impression .im-hero-copy {
+        width: calc(100% - 40px);
+        margin-bottom: 36px;
       }
       #theme-impression .im-hero h1 {
-        font-size: clamp(34px, 9vw, 44px);
+        font-size: clamp(38px, 10vw, 56px);
         margin-block: 22px 24px;
       }
       #theme-impression .im-hero-description {
-        font-size: 15px;
+        font-size: 17px;
+      }
+      #theme-impression .im-hero:after {
+        background: linear-gradient(0deg, var(--im-paper), transparent 56px);
       }
       #theme-impression .im-journal {
         padding-top: 40px;

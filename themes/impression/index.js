@@ -275,7 +275,7 @@ function Hero({ siteInfo }) {
           {siteConfig('IMPRESSION_DESCRIPTION', CONFIG.IMPRESSION_DESCRIPTION)}
         </p>
         <a className='im-text-link' href='#im-journal'>
-          查看文章 <Arrow />
+          查看文章 <span className='im-hero-scroll' aria-hidden='true'>↓</span>
         </a>
       </div>
     </section>
