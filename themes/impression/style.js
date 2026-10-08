@@ -77,6 +77,114 @@ export const Style = () => (
       ) {
       border-bottom: 0 !important;
     }
+    #theme-impression .notion-bookmark {
+      margin-block: 8px;
+      border: 0;
+      border-radius: 12px;
+      background: transparent;
+      box-shadow: none;
+      color: var(--im-ink);
+      transform: translateY(0);
+      transition:
+        background-color 0.3s,
+        box-shadow 0.4s,
+        transform 0.45s var(--im-ease);
+    }
+    #theme-impression .notion-bookmark > div:first-child {
+      position: relative;
+      min-width: 0;
+      padding: 24px 56px 24px 24px;
+      color: inherit;
+    }
+    #theme-impression .notion-bookmark > div:first-child::after {
+      content: '';
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      width: 20px;
+      height: 20px;
+      background: var(--im-rust);
+      mask: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"%3E%3Cpath d="M5 19 19 5M5 5h14v14" fill="none" stroke="black" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/%3E%3C/svg%3E')
+        center / contain no-repeat;
+      opacity: 0;
+      transform: translate(-6px, 6px);
+      transition:
+        opacity 0.25s,
+        transform 0.45s var(--im-ease);
+      pointer-events: none;
+    }
+    #theme-impression .notion-bookmark-title {
+      min-height: 0;
+      margin-bottom: 8px;
+      color: var(--im-ink);
+      font-size: 22px;
+      font-weight: 500;
+      line-height: 1.3;
+      white-space: normal;
+      overflow-wrap: anywhere;
+      transition: color 0.25s;
+    }
+    #theme-impression .notion-bookmark-description {
+      height: auto;
+      max-height: 3.1em;
+      color: var(--im-muted);
+      font-size: 16px;
+      line-height: 1.55;
+      opacity: 1;
+    }
+    #theme-impression .notion-bookmark-link {
+      width: 100%;
+      min-width: 0;
+      align-items: center;
+      margin-top: 16px;
+    }
+    #theme-impression .notion-bookmark-link > .notion-bookmark-link-text {
+      min-width: 0;
+      color: var(--im-green);
+      font-size: 14px;
+      line-height: 1.4;
+    }
+    #theme-impression .notion-bookmark:focus-visible,
+    #theme-impression .notion-bookmark:active {
+      background: var(--im-card);
+      box-shadow: 0 14px 36px -18px
+        color-mix(in srgb, var(--im-ink) 28%, transparent);
+    }
+    #theme-impression .notion-bookmark:focus-visible {
+      transform: translateY(-5px);
+    }
+    #theme-impression .notion-bookmark:focus-visible .notion-bookmark-title,
+    #theme-impression .notion-bookmark:active .notion-bookmark-title {
+      color: var(--im-rust);
+    }
+    #theme-impression .notion-bookmark:focus-visible > div:first-child::after,
+    #theme-impression .notion-bookmark:active > div:first-child::after {
+      opacity: 1;
+      transform: translate(0, 0);
+    }
+    @media (hover: hover) {
+      #theme-impression
+        .notion-row:has(> .notion-bookmark):hover
+        > .notion-bookmark {
+        background: var(--im-card);
+        box-shadow: 0 14px 36px -18px
+          color-mix(in srgb, var(--im-ink) 28%, transparent);
+        transform: translateY(-5px);
+      }
+      #theme-impression
+        .notion-row:has(> .notion-bookmark):hover
+        > .notion-bookmark
+        .notion-bookmark-title {
+        color: var(--im-rust);
+      }
+      #theme-impression
+        .notion-row:has(> .notion-bookmark):hover
+        > .notion-bookmark
+        > div:first-child::after {
+        opacity: 1;
+        transform: translate(0, 0);
+      }
+    }
     #theme-impression button,
     #theme-impression input {
       font: inherit;
@@ -150,10 +258,9 @@ export const Style = () => (
       transition: color 0.2s;
     }
     #theme-impression .im-nav a:hover,
-    #theme-impression .im-nav summary:hover {
-      color: var(--im-rust);
-    }
-    #theme-impression .im-nav [aria-current='page'] {
+    #theme-impression .im-nav a:focus-visible,
+    #theme-impression .im-nav summary:hover,
+    #theme-impression .im-nav summary:focus-visible {
       color: var(--im-rust);
     }
     #theme-impression .im-mode {
@@ -1026,8 +1133,9 @@ export const Style = () => (
       transition: transform 0.4s var(--im-ease);
     }
     #theme-impression .im-nav > a:hover:after,
-    #theme-impression .im-nav > a[aria-current='page']:after,
-    #theme-impression .im-menu-group[open] > summary:after {
+    #theme-impression .im-nav > a:focus-visible:after,
+    #theme-impression .im-menu-group > summary:hover:after,
+    #theme-impression .im-menu-group > summary:focus-visible:after {
       transform: scaleX(1);
     }
     #theme-impression .im-submenu {
@@ -1363,7 +1471,11 @@ export const Style = () => (
         transform: none;
       }
       #theme-impression .im-post:hover,
-      #theme-impression .im-taxonomy-grid a:hover {
+      #theme-impression .im-taxonomy-grid a:hover,
+      #theme-impression .notion-bookmark:focus-visible,
+      #theme-impression
+        .notion-row:has(> .notion-bookmark):hover
+        > .notion-bookmark {
         transform: none;
       }
     }
@@ -1412,7 +1524,11 @@ export const Style = () => (
         transform: none;
       }
       #theme-impression .im-post:hover,
-      #theme-impression .im-taxonomy-grid a:hover {
+      #theme-impression .im-taxonomy-grid a:hover,
+      #theme-impression .notion-bookmark:focus-visible,
+      #theme-impression
+        .notion-row:has(> .notion-bookmark):hover
+        > .notion-bookmark {
         transform: none;
       }
       #theme-impression .im-post:hover .im-cover-image,
