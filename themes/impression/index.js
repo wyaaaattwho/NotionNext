@@ -135,6 +135,7 @@ const LayoutBase = props => {
       </Head>
       <StyleFonts />
       <Style />
+      <canvas className='im-watercolor' aria-hidden='true' />
       <div className='im-reading-progress' aria-hidden='true' />
       <a className='im-skip' href='#im-main'>
         跳至正文

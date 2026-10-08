@@ -18,6 +18,15 @@ export const Style = () => (
       font-family: var(--im-sans);
       -webkit-font-smoothing: antialiased;
       overflow: clip;
+      isolation: isolate;
+    }
+    #theme-impression .im-watercolor {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      pointer-events: none;
     }
     .dark #theme-impression {
       --im-paper: #232822;
@@ -906,9 +915,7 @@ export const Style = () => (
       top: 0;
       min-height: 96px;
       background: var(--im-paper);
-      transition:
-        min-height 0.4s var(--im-ease),
-        border-color 0.4s;
+      transition: border-color 0.4s;
       isolation: isolate;
     }
     #theme-impression .im-header:before {
@@ -919,9 +926,6 @@ export const Style = () => (
       z-index: -1;
       border-bottom: 1px solid var(--im-line);
       transition: box-shadow 0.4s;
-    }
-    #theme-impression.im-header-scrolled .im-header {
-      min-height: 76px;
     }
     #theme-impression.im-header-scrolled .im-header:before {
       box-shadow: 0 5px 25px #25301f07;
@@ -1268,14 +1272,8 @@ export const Style = () => (
       #theme-impression .im-header {
         min-height: 80px;
       }
-      #theme-impression.im-header-scrolled .im-header {
-        min-height: 72px;
-      }
       #theme-impression .im-nav {
-        top: 79px;
-      }
-      #theme-impression.im-header-scrolled .im-nav {
-        top: 71px;
+        top: calc(100% - 1px);
       }
       #theme-impression .im-nav-open {
         animation: im-menu-enter 0.3s var(--im-ease) both;

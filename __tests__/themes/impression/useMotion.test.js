@@ -1,12 +1,18 @@
 import { useRef } from 'react'
 import { act, render } from '@testing-library/react'
 import useImpressionMotion from '@/themes/impression/useMotion'
+import { createWatercolorScene } from '@/themes/impression/watercolor'
+
+jest.mock('@/themes/impression/watercolor', () => ({
+  createWatercolorScene: jest.fn()
+}))
 
 function Fixture({ route = '/' }) {
   const root = useRef(null)
   useImpressionMotion(root, route)
   return (
     <div ref={root} data-testid='root'>
+      <canvas className='im-watercolor' aria-hidden='true' />
       <main id='im-main'>
         <section className='im-hero' />
         <div className='notion-row' data-testid='row'>
@@ -56,6 +62,7 @@ describe('Impression motion lifecycle', () => {
   }
 
   beforeEach(() => {
+    createWatercolorScene.mockReturnValue(null)
     intersections = []
     mutations = []
     media = new Map()
@@ -118,6 +125,7 @@ describe('Impression motion lifecycle', () => {
   })
 
   afterEach(() => {
+    document.documentElement.classList.remove('dark')
     window.IntersectionObserver = originalIntersectionObserver
     window.MutationObserver = originalMutationObserver
     window.requestAnimationFrame = originalRaf
@@ -264,6 +272,60 @@ describe('Impression motion lifecycle', () => {
     act(() => pointer.change(false))
     act(() => flushFrame())
     expect(root.style.getPropertyValue('--im-hero-shift')).toBe('0.00px')
+    expect(frames.size).toBe(0)
+  })
+
+  it('settles watercolor after scrolling and cancels pending frames on unmount', () => {
+    const painting = {
+      resize: jest.fn(),
+      render: jest.fn(),
+      destroy: jest.fn()
+    }
+    createWatercolorScene.mockReturnValue(painting)
+    const { unmount } = render(<Fixture />)
+    expect(painting.render).toHaveBeenLastCalledWith(400, false)
+    Object.defineProperty(window, 'scrollY', { configurable: true, value: 900 })
+    act(() => window.dispatchEvent(new Event('scroll')))
+    let count = 0
+    while (frames.size && count++ < 80) act(() => flushFrame())
+    expect(painting.render).toHaveBeenLastCalledWith(900, false)
+    expect(frames.size).toBe(0)
+    Object.defineProperty(window, 'scrollY', { configurable: true, value: 1000 })
+    act(() => window.dispatchEvent(new Event('scroll')))
+    expect(frames.size).toBe(1)
+    unmount()
+    expect(frames.size).toBe(0)
+    expect(painting.destroy).toHaveBeenCalledTimes(1)
+  })
+
+  it('keeps watercolor static with reduced motion and repaints on theme changes', () => {
+    const painting = {
+      resize: jest.fn(),
+      render: jest.fn(),
+      destroy: jest.fn()
+    }
+    createWatercolorScene.mockReturnValue(painting)
+    render(<Fixture />)
+    act(() => media.get('(prefers-reduced-motion: reduce)').change(true))
+    act(() => flushFrame())
+    expect(painting.render).toHaveBeenLastCalledWith(0, false)
+    Object.defineProperty(window, 'scrollY', { configurable: true, value: 900 })
+    act(() => {
+      window.dispatchEvent(new Event('scroll'))
+      flushFrame()
+    })
+    expect(painting.render).toHaveBeenLastCalledWith(0, false)
+    expect(frames.size).toBe(0)
+    expect(mutations[0].observe).toHaveBeenCalledWith(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['class']
+    })
+    document.documentElement.classList.add('dark')
+    act(() => {
+      mutations[0].callback([])
+      flushFrame()
+    })
+    expect(painting.render).toHaveBeenLastCalledWith(0, true)
     expect(frames.size).toBe(0)
   })
 })

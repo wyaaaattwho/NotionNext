@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import { createWatercolorScene } from './watercolor'
 
 const REVEAL_TARGETS = [
   '[data-reveal]',
@@ -43,6 +44,7 @@ export default function useImpressionMotion(rootRef, routeKey) {
     const originalShift = root.style.getPropertyValue('--im-hero-shift')
     const hadMotionClass = root.classList.contains('im-motion-ready')
     const hadScrolledClass = root.classList.contains('im-header-scrolled')
+    const watercolor = createWatercolorScene(root.querySelector('.im-watercolor'))
     let revealObserver = null
     let entryAnimation = null
     let hero = null
@@ -51,6 +53,8 @@ export default function useImpressionMotion(rootRef, routeKey) {
     let needsMetrics = true
     let targetShift = 0
     let currentShift = 0
+    let targetWaterScroll = 0
+    let currentWaterScroll = 0
     let destroyed = false
 
     function rememberTarget(element) {
@@ -118,6 +122,7 @@ export default function useImpressionMotion(rootRef, routeKey) {
         String(scrollDistance ? clamp(scrollTop / scrollDistance, 0, 1) : 0)
       )
       root.classList.toggle('im-header-scrolled', scrollTop > 48)
+      targetWaterScroll = reducedMotion.matches ? 0 : scrollTop
 
       targetShift = 0
       if (!reducedMotion.matches && desktopPointer.matches && hero) {
@@ -138,6 +143,7 @@ export default function useImpressionMotion(rootRef, routeKey) {
       if (needsRefresh) {
         needsRefresh = false
         refreshTargets()
+        watercolor?.resize()
       }
       if (needsMetrics) {
         needsMetrics = false
@@ -153,7 +159,24 @@ export default function useImpressionMotion(rootRef, routeKey) {
         }
       }
       root.style.setProperty('--im-hero-shift', `${currentShift.toFixed(2)}px`)
-      if (currentShift !== targetShift) schedule()
+      if (reducedMotion.matches || !watercolor) {
+        currentWaterScroll = targetWaterScroll
+      } else {
+        currentWaterScroll += (targetWaterScroll - currentWaterScroll) * 0.14
+        if (Math.abs(targetWaterScroll - currentWaterScroll) < 0.1) {
+          currentWaterScroll = targetWaterScroll
+        }
+      }
+      watercolor?.render(
+        currentWaterScroll,
+        document.documentElement.classList.contains('dark')
+      )
+      if (
+        currentShift !== targetShift ||
+        currentWaterScroll !== targetWaterScroll
+      ) {
+        schedule()
+      }
     }
 
     function schedule() {
@@ -217,6 +240,12 @@ export default function useImpressionMotion(rootRef, routeKey) {
     needsRefresh = false
     updateMetrics()
     needsMetrics = false
+    currentWaterScroll = targetWaterScroll
+    watercolor?.resize()
+    watercolor?.render(
+      currentWaterScroll,
+      document.documentElement.classList.contains('dark')
+    )
 
     const main = root.querySelector('#im-main')
     if (!reducedMotion.matches && main?.animate) {
@@ -230,11 +259,16 @@ export default function useImpressionMotion(rootRef, routeKey) {
     }
 
     // Notion embeds and lazy-loaded page blocks can arrive after hydration.
-    // One child-list observer is scoped to the theme; attributes are excluded
-    // so reveal classes and scroll custom properties never feed back into it.
+    // Theme attributes are excluded so reveal classes and scroll properties
+    // never feed back into this observer. The document's class alone is watched
+    // separately to repaint the background when light/dark mode changes.
     const contentObserver =
       'MutationObserver' in window ? new MutationObserver(onResizeOrLoad) : null
     contentObserver?.observe(root, { childList: true, subtree: true })
+    contentObserver?.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['class']
+    })
 
     window.addEventListener('scroll', onScroll, { passive: true })
     window.addEventListener('resize', onResizeOrLoad, { passive: true })
@@ -248,6 +282,7 @@ export default function useImpressionMotion(rootRef, routeKey) {
       revealObserver?.disconnect()
       contentObserver?.disconnect()
       entryAnimation?.cancel()
+      watercolor?.destroy()
       window.removeEventListener('scroll', onScroll)
       window.removeEventListener('resize', onResizeOrLoad)
       root.removeEventListener('load', onResizeOrLoad, true)
