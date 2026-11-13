@@ -1,0 +1,39 @@
+export const FONT_PRELOAD = '/fonts/analog/ibm-plex-sans-latin.woff2'
+export const StyleFonts = () => (
+  <style jsx global>{`
+    @font-face {
+      font-family: 'Barlow Condensed';
+      font-style: normal;
+      font-weight: 700;
+      font-display: swap;
+      src: url(/fonts/analog/barlow-condensed-latin.woff2) format('woff2');
+      unicode-range:
+        U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+        U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+        U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+    @font-face {
+      font-family: 'IBM Plex Sans';
+      font-style: normal;
+      font-weight: 400 700;
+      font-stretch: 100%;
+      font-display: swap;
+      src: url(/fonts/analog/ibm-plex-sans-latin.woff2) format('woff2');
+      unicode-range:
+        U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+        U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+        U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+    @font-face {
+      font-family: 'Permanent Marker';
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: url(/fonts/analog/permanent-marker-latin.woff2) format('woff2');
+      unicode-range:
+        U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+        U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+        U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+  `}</style>
+)
