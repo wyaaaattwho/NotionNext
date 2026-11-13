@@ -1,5 +1,7 @@
 # City study / 01
 
+Current lo-fi image variants, scanned-paper texture and their generation prompts are documented in [LOFI-ASSETS.md](./LOFI-ASSETS.md). The files below preserve the earlier high-resolution image.
+
 Original theme illustration generated with the built-in imagegen tool on 2026-11-13. The anonymous figure is not a portrait of the site author.
 
 Web assets: `city-study.webp` (1536 × 1024) and `city-study-small.webp` (800 × 533). Both are compressed WebP exports of the same original image.

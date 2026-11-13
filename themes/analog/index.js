@@ -249,20 +249,72 @@ function Hero({ siteInfo }) {
     biography && biography !== siteConfig('AUTHOR', 'wyaaaattwho')
       ? biography
       : 'AI research & engineering.'
+  const words = title.split(/\s+/)
+  const chunk = Math.max(1, Math.ceil(words.length / 3))
+  const fragments = []
+  for (let index = 0; index < words.length; index += chunk)
+    fragments.push(words.slice(index, index + chunk).join(' '))
   return (
-    <section className='an-hero an-shell' aria-label='博客简介'>
-      <div className='an-hero-index an-label'>
+    <section className='an-hero' aria-label='博客简介'>
+      <div className='an-hero-index an-label an-shell'>
         <span>PERSONAL ARCHIVE / AI RESEARCH</span>
-        <span>01 — INTRODUCTION</span>
+        <span>01 — CITY STUDY</span>
       </div>
-      <div className='an-hero-grid'>
-        <div className='an-hero-copy'>
+      <div className='an-hero-stage'>
+        <figure className='an-hero-photo'>
+          <div className='an-hero-photo-frame'>
+            <picture>
+              {!customImage && (
+                <source
+                  media='(max-width: 700px)'
+                  srcSet='/images/analog/city-study-lofi-small.jpg'
+                />
+              )}
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                id='header-cover'
+                className='an-hero-image'
+                src={image}
+                alt='原创低保真城市影像：静止的匿名人影、拖影中的行人和街道'
+                width='640'
+                height='427'
+                fetchpriority='high'
+                decoding='async'
+              />
+            </picture>
+          </div>
+          <figcaption className='an-label'>
+            <span>CITY STUDY / 01</span>
+            <span>STILL / IN MOTION</span>
+          </figcaption>
+        </figure>
+        <div className='an-hero-copy an-shell'>
           <p className='an-eyebrow'>RESEARCH. CODE. NOTES.</p>
           <h1>
-            {title.split(/\s+/).map((word, index) => (
-              <span key={index}>{word} </span>
+            {fragments.map((fragment, index) => (
+              <span className='an-headline-fragment' key={index}>
+                <span>{fragment} </span>
+              </span>
             ))}
           </h1>
+        </div>
+        {!customImage && (
+          <div className='an-contact-print' aria-hidden='true'>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src='/images/analog/city-study-lofi-small.jpg'
+              alt=''
+              width='480'
+              height='320'
+              loading='lazy'
+            />
+            <span className='an-label'>CONTACT / 01—02</span>
+          </div>
+        )}
+        <span className='an-handwritten an-hero-note' aria-hidden='true'>
+          research notes ↘
+        </span>
+        <div className='an-hero-controls'>
           <p className='an-hero-bio'>{description}</p>
           <div className='an-hero-actions'>
             <SmartLink href='/about' className='an-button'>
@@ -273,51 +325,8 @@ function Hero({ siteInfo }) {
             </a>
           </div>
         </div>
-        <figure className='an-hero-photo'>
-          <div className='an-hero-photo-frame'>
-            {/* A theme illustration, never presented as the researcher's portrait. */}
-            <picture>
-              {!customImage && (
-                <source
-                  media='(max-width: 700px)'
-                  srcSet='/images/analog/city-study-small.webp'
-                />
-              )}
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                id='header-cover'
-                className='an-hero-image'
-                src={image}
-                alt='原创城市影像：静止的人影与运动中的街道'
-                width='1536'
-                height='1024'
-                fetchpriority='high'
-                decoding='async'
-              />
-            </picture>
-            <span
-              className='an-photo-cross an-photo-cross-top'
-              aria-hidden='true'
-            >
-              ＋
-            </span>
-            <span
-              className='an-photo-cross an-photo-cross-bottom'
-              aria-hidden='true'
-            >
-              ＋
-            </span>
-          </div>
-          <figcaption className='an-label'>
-            <span>CITY STUDY / 01</span>
-            <span>STILL / IN MOTION</span>
-          </figcaption>
-          <span className='an-handwritten an-hero-note' aria-hidden='true'>
-            research notes ↗
-          </span>
-        </figure>
       </div>
-      <div className='an-hero-bottom an-label'>
+      <div className='an-hero-bottom an-label an-shell'>
         <span>AI RESEARCH & ENGINEERING</span>
         <span>SCROLL TO EXPLORE ↓</span>
       </div>
@@ -360,7 +369,12 @@ function PostCard({ post, featured = false, index = 0 }) {
           className='an-post-cover'
           aria-label={`阅读：${post.title}`}
         >
-          <LazyImage src={cover} alt={post.title} className='an-cover-image' />
+          <LazyImage
+            src={cover}
+            alt={post.title}
+            width={featured ? 640 : 320}
+            className='an-cover-image'
+          />
           <span className='an-post-image-label an-label' aria-hidden='true'>
             {featured
               ? 'LATEST ENTRY'

@@ -172,8 +172,7 @@ export const ProfileStyle = () => (
       margin-bottom: 14px;
     }
     #theme-analog .an-career-title b,
-    #theme-analog .an-paper-title b,
-    #theme-analog .an-project-body h3 b {
+    #theme-analog .an-paper-title b {
       font-weight: inherit;
     }
     #theme-analog .an-career-details {
@@ -199,8 +198,7 @@ export const ProfileStyle = () => (
       min-width: 0;
       align-self: start;
     }
-    #theme-analog .an-paper-art,
-    #theme-analog .an-project-art {
+    #theme-analog .an-paper-art {
       --an-muted: #58666c;
       background: #fff;
       color: #222b30;
@@ -215,8 +213,7 @@ export const ProfileStyle = () => (
     #theme-analog .an-paper-art:empty {
       display: none;
     }
-    #theme-analog .an-paper-art .an-profile-figure + .an-profile-figure,
-    #theme-analog .an-project-art .an-profile-figure + .an-profile-figure {
+    #theme-analog .an-paper-art .an-profile-figure + .an-profile-figure {
       margin-top: 16px;
     }
     #theme-analog .an-paper-art img {
@@ -302,48 +299,6 @@ export const ProfileStyle = () => (
       + .an-profile-text {
       margin-top: 14px;
     }
-    #theme-analog .an-profile-entries-projects {
-      display: grid;
-      gap: 58px;
-    }
-    #theme-analog .an-project-card {
-      display: grid;
-      grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
-      gap: 44px;
-      align-items: center;
-      padding-top: 28px;
-      border-top: 1px solid var(--an-line);
-    }
-    #theme-analog .an-project-art {
-      min-width: 0;
-    }
-    #theme-analog .an-project-art img {
-      width: 100%;
-      height: 300px;
-      object-fit: contain;
-      display: block;
-    }
-    #theme-analog .an-project-body {
-      min-width: 0;
-    }
-    #theme-analog .an-project-body > .an-label {
-      color: var(--an-accent);
-      margin-bottom: 16px;
-    }
-    #theme-analog .an-project-body h3 {
-      font-size: 28px;
-      line-height: 1.22;
-      letter-spacing: -0.025em;
-      margin-bottom: 20px;
-    }
-    #theme-analog .an-project-body > p:not(.an-label) {
-      font-size: 15px;
-      line-height: 1.85;
-      color: var(--an-muted);
-    }
-    #theme-analog .an-project-body > .an-profile-text + .an-profile-text {
-      margin-top: 14px;
-    }
     #theme-analog .an-profile-comments {
       margin-bottom: 60px;
     }
@@ -359,14 +314,6 @@ export const ProfileStyle = () => (
       }
       #theme-analog .an-paper-card:nth-child(even) {
         padding-top: 36px;
-      }
-      #theme-analog .an-project-card:nth-child(even) .an-project-art {
-        grid-column: 2;
-        grid-row: 1;
-      }
-      #theme-analog .an-project-card:nth-child(even) .an-project-body {
-        grid-column: 1;
-        grid-row: 1;
       }
     }
     @media (max-width: 1000px) {
@@ -406,15 +353,6 @@ export const ProfileStyle = () => (
       }
       #theme-analog .an-paper-title {
         font-size: 23px;
-      }
-      #theme-analog .an-project-card {
-        gap: 28px;
-      }
-      #theme-analog .an-project-body h3 {
-        font-size: 25px;
-      }
-      #theme-analog .an-project-art img {
-        height: 240px;
       }
     }
     @media (max-width: 650px) {
@@ -521,8 +459,164 @@ export const ProfileStyle = () => (
       #theme-analog .an-paper-abstract-text {
         font-size: 13px;
       }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      #theme-analog .an-paper-abstract > summary span {
+        transition: none;
+      }
+    }
+    #theme-analog .an-profile-section-projects > .an-profile-section-header h2 {
+      font-size: clamp(55px, 8vw, 108px);
+      letter-spacing: -0.02em;
+    }
+    #theme-analog .an-profile-entries-projects {
+      display: grid;
+      gap: 90px;
+    }
+    #theme-analog .an-project-card {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      gap: 25px 24px;
+      align-items: start;
+      border-top: 2px solid var(--an-ink);
+      padding-top: 29px;
+    }
+    #theme-analog .an-project-heading {
+      grid-column: 1 / 12;
+      min-width: 0;
+    }
+    #theme-analog .an-project-heading > .an-label {
+      color: var(--an-link);
+      margin-bottom: 18px;
+    }
+    #theme-analog .an-project-heading h3 {
+      font: 700 clamp(35px, 4.5vw, 62px)/1.04 var(--an-display);
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+      overflow-wrap: anywhere;
+      mask: url('/images/analog/ink-loss.svg') 5px 0 / 170px 110px repeat;
+      mask-mode: luminance;
+    }
+    #theme-analog .an-project-art {
+      --an-muted: #46545e;
+      grid-column: 1 / 13;
+      grid-row: 2;
+      min-width: 0;
+      background: #fff;
+      color: #252b32;
+      padding: 20px;
+    }
+    #theme-analog .an-project-art img {
+      display: block;
+      width: 100%;
+      height: 410px;
+      object-fit: contain;
+    }
+    #theme-analog .an-project-art .an-profile-figure + .an-profile-figure {
+      margin-top: 18px;
+    }
+    #theme-analog .an-project-body {
+      grid-column: 5 / 13;
+      grid-row: 3;
+      min-width: 0;
+      font-size: 16px;
+      line-height: 1.85;
+    }
+    #theme-analog .an-project-body > .an-profile-text + .an-profile-text {
+      margin-top: 15px;
+    }
+    #theme-analog .an-project-margin-note {
+      grid-column: 1 / 5;
+      grid-row: 3;
+      font-size: 27px;
+      transform: rotate(-4deg);
+      margin: 18px 0 0 10px;
+    }
+    #theme-analog .an-project-layout-1 .an-project-heading {
+      grid-column: 7 / 13;
+      grid-row: 1;
+    }
+    #theme-analog .an-project-layout-1 .an-project-heading h3 {
+      font-size: 45px;
+    }
+    #theme-analog .an-project-layout-1 .an-project-art {
+      grid-column: 1 / 7;
+      grid-row: 1 / 3;
+      margin-top: 38px;
+      transform: rotate(-0.7deg);
+    }
+    #theme-analog .an-project-layout-1 .an-project-art img {
+      height: 340px;
+    }
+    #theme-analog .an-project-layout-1 .an-project-body {
+      grid-column: 7 / 13;
+      grid-row: 2;
+    }
+    #theme-analog .an-project-layout-1 .an-project-margin-note {
+      grid-column: 1 / 7;
+      grid-row: 3;
+      justify-self: end;
+    }
+    #theme-analog .an-project-layout-2 .an-project-heading {
+      grid-column: 2 / 13;
+    }
+    #theme-analog .an-project-layout-2 .an-project-art {
+      grid-column: 5 / 13;
+      grid-row: 2 / 4;
+      margin-top: 26px;
+    }
+    #theme-analog .an-project-layout-2 .an-project-art img {
+      height: 355px;
+    }
+    #theme-analog .an-project-layout-2 .an-project-body {
+      position: relative;
+      isolation: isolate;
+      grid-column: 1 / 6;
+      grid-row: 2;
+      padding: 25px;
+    }
+    #theme-analog .an-project-layout-2 .an-project-body::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: var(--an-card) url('/images/analog/scan-surface.webp') 22%
+        80% / 620px;
+      background-blend-mode: soft-light;
+      clip-path: polygon(0 0, 99% 2%, 100% 97%, 1% 100%);
+    }
+    #theme-analog .an-project-layout-2 .an-project-margin-note {
+      grid-column: 1 / 5;
+      grid-row: 3;
+    }
+    @media (max-width: 1000px) and (min-width: 651px) {
+      #theme-analog .an-project-card {
+        gap: 24px 18px;
+      }
+      #theme-analog .an-project-heading h3 {
+        font-size: 46px;
+      }
+      #theme-analog .an-project-layout-1 .an-project-heading h3 {
+        font-size: 34px;
+      }
+      #theme-analog .an-project-art img {
+        height: 330px;
+      }
+      #theme-analog .an-project-layout-1 .an-project-art img,
+      #theme-analog .an-project-layout-2 .an-project-art img {
+        height: 270px;
+      }
+      #theme-analog .an-project-body {
+        font-size: 15px;
+      }
+      #theme-analog .an-project-layout-2 .an-project-body {
+        padding: 18px;
+      }
+    }
+    @media (max-width: 650px) {
       #theme-analog .an-profile-entries-projects {
-        gap: 36px;
+        gap: 52px;
       }
       #theme-analog .an-project-card {
         display: flex;
@@ -531,23 +625,30 @@ export const ProfileStyle = () => (
         gap: 24px;
         padding-top: 24px;
       }
-      #theme-analog .an-project-art {
-        padding: 15px;
+      #theme-analog .an-project-heading h3,
+      #theme-analog .an-project-layout-1 .an-project-heading h3 {
+        font-size: clamp(32px, 9.8vw, 43px);
+        line-height: 1.08;
       }
-      #theme-analog .an-project-art img {
-        height: 220px;
+      #theme-analog .an-project-card .an-project-art {
+        margin: 0;
+        padding: 13px;
+        transform: none;
       }
-      #theme-analog .an-project-body h3 {
-        font-size: 25px;
-        margin-bottom: 16px;
+      #theme-analog .an-project-card .an-project-art img {
+        height: 245px;
       }
-      #theme-analog .an-project-body > p:not(.an-label) {
-        font-size: 14px;
+      #theme-analog .an-project-card .an-project-body {
+        padding: 0;
+        font-size: 15px;
       }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      #theme-analog .an-paper-abstract > summary span {
-        transition: none;
+      #theme-analog .an-project-layout-2 .an-project-body::before {
+        display: none;
+      }
+      #theme-analog .an-project-card .an-project-margin-note {
+        align-self: flex-end;
+        margin: 0;
+        font-size: 22px;
       }
     }
   `}</style>

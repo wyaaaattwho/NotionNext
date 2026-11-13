@@ -1,8 +1,8 @@
 # Analog
 
-冷灰蓝、炭黑、灰白和暗酒红色的研究档案主题。首页使用原创城市影像、手写标题与杂志式错位构图；正文使用 IBM Plex Sans，章节标识使用 Barlow Condensed，手写字使用 Permanent Marker。字体自托管，许可证见 `public/fonts/analog/`。
+面向 2001–2004 年廉价数码相机、另类摇滚 CD 内页和独立杂志的低保真研究档案主题。首页采用沉浸式低分辨率城市影像、纸片标题和接触印样拼贴；正文使用 IBM Plex Sans，章节标识使用 Barlow Condensed，手写字使用 Permanent Marker。字体自托管，许可证见 `public/fonts/analog/`。
 
-主背景为冷银灰 `#D1D5D5`，文章区为褪色蓝灰 `#B9C2C7`，主文字为 `#252D35`，强调色为 `#873B47`，细边框使用 `rgba(37,45,53,0.18)`。次级文字从石板灰略加深，以保证两种底色上的可读性。纹理为低透明度的单色颗粒。Notion 技术插图的白底保持原样。
+主背景为脏银灰 `#BCC3C6`，辅以褪色牛仔蓝、炭黑 `#252B32`、旧纸灰白 `#D9D9D3` 和酒红 `#844753`。页面背景直接使用扫描纸面位图，各区域采用不同的裁切与底色混合；不再给整个页面叠加统一颗粒。大字标题使用局部缺墨遮罩，正文、导航和操作控件保持清晰。
 
 ## 切换与旧版
 
@@ -12,7 +12,7 @@
 
 ## 个人主页
 
-继续识别已有的 Notion 格式：简介、Research Interests、Experience、Publications / Preprints、Projects。机构和经历按时间记录排版，论文采用独立双列瀑布流，摘要展开只推动同列内容，项目以交错图文展示。保留富文本、链接、图片放大及不符合固定格式内容的原生 Notion 回退。
+继续识别已有的 Notion 格式：简介、Research Interests、Experience、Publications / Preprints、Projects。机构和经历按时间记录排版，论文采用独立双列瀑布流，摘要展开只推动同列内容。项目交替使用跨页大图、分栏侧写和叠页说明三种构图，放大标题与手写页边标注形成不同节奏。技术插图仍保留高清原图与白底，不做低清压缩。保留富文本、链接、图片放大及不符合固定格式内容的原生 Notion 回退。
 
 ## 交互
 
@@ -22,4 +22,6 @@
 
 ## 首页影像
 
-内置 imagegen 生成的原创城市影像（2026-11-13），用于主题插图。匿名人物不是站点作者肖像。网页使用 `public/images/analog/city-study.webp`（约 93 KB）及手机版本 `city-study-small.webp`（约 25 KB）。生成记录及完整提示词见 [影像说明](../../../public/images/analog/README.md)。
+内置 imagegen 编辑的原创城市影像（2026-11-13）包含局部失焦、扫描条纹、色彩渗漏和噪点，再以实际 JPEG 编码保留压缩损伤。桌面素材 `city-study-lofi.jpg` 为 640×427、约 11 KB，手机素材 `city-study-lofi-small.jpg` 为 480×320、约 6 KB。匿名人物不是站点作者肖像。
+
+`scan-surface.webp` 为 imagegen 生成的扫描纸面素材（约 47 KB），作为背景使用，不遮盖文字。`ink-loss.svg` 是代码绘制的局部缺墨遮罩，仅用于大字标题。原先的高分辨率版本保留在资源目录。完整提示词及导出说明见 [影像说明](../../../public/images/analog/LOFI-ASSETS.md)。

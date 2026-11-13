@@ -1,13 +1,14 @@
 export const Style = () => (
   <style jsx global>{`
     #theme-analog {
-      --an-paper: #d1d5d5;
-      --an-section: #b9c2c7;
-      --an-card: #c5cdd0;
-      --an-ink: #252d35;
-      --an-muted: #4b5963;
+      --an-paper: #bcc3c6;
+      --an-section: #a3b0b9;
+      --an-card: #d0d1ce;
+      --an-ink: #252b32;
+      --an-muted: #42515b;
       --an-line: rgba(37, 45, 53, 0.18);
-      --an-accent: #873b47;
+      --an-accent: #844753;
+      --an-link: #6e3441;
       --an-steel: #536e80;
       --an-sans: 'IBM Plex Sans', 'PingFang SC', 'Microsoft YaHei', sans-serif;
       --an-display: 'Barlow Condensed', var(--an-sans);
@@ -18,38 +19,44 @@ export const Style = () => (
       overflow: clip;
       isolation: isolate;
       background: var(--an-paper);
+      background-image: url('/images/analog/scan-surface.webp');
+      background-size: 1200px auto;
+      background-position: 50% 60px;
+      background-blend-mode: soft-light;
       color: var(--an-ink);
       font: 400 16px/1.65 var(--an-sans);
       -webkit-font-smoothing: antialiased;
     }
     .dark #theme-analog {
-      --an-paper: #1c252b;
-      --an-section: #25313a;
-      --an-card: #28343c;
-      --an-ink: #d1d5d5;
+      --an-paper: #252b32;
+      --an-section: #303e49;
+      --an-card: #35414a;
+      --an-ink: #d9d9d3;
       --an-muted: #b0bdc2;
       --an-line: rgba(209, 213, 213, 0.18);
       --an-accent: #d29aa4;
+      --an-link: #e4b2bc;
       --an-steel: #afc8d7;
-    }
-    #theme-analog::after {
-      content: '';
-      position: fixed;
-      inset: 0;
-      z-index: 60;
-      pointer-events: none;
-      opacity: 0.028;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 150 150' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Cpath fill='%23000' filter='url(%23n)' opacity='.65' d='M0 0h150v150H0z'/%3E%3C/svg%3E");
     }
     #theme-analog .an-motion-trace {
       position: fixed;
       inset: -10% -20%;
       z-index: -1;
       pointer-events: none;
-      opacity: 0.5;
+      opacity: 0.16;
       transform: translate3d(var(--an-trace-shift, 0px), 0, 0);
-      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1600' height='1000' viewBox='0 0 1600 1000'%3E%3Cg fill='%237d97a8' opacity='.045'%3E%3Cpath d='M0 160h1600v64H0zM0 228h1600v8H0zM0 730h1600v30H0z'/%3E%3C/g%3E%3Cpath d='M0 765h1600' stroke='%2382545e' stroke-opacity='.06' stroke-width='2'/%3E%3C/svg%3E")
-        center / cover;
+      background: url('/images/analog/scan-surface.webp') 45% 25% / 100% auto;
+      mix-blend-mode: multiply;
+      clip-path: polygon(
+        0 16%,
+        100% 10%,
+        100% 23%,
+        0 25%,
+        0 68%,
+        100% 74%,
+        100% 89%,
+        0 85%
+      );
     }
     #theme-analog ::selection {
       background: #b9c2c7;
@@ -141,6 +148,10 @@ export const Style = () => (
       position: absolute;
       inset: 0 calc((min(1280px, 100vw - 112px) - 100vw) / 2);
       background: var(--an-paper);
+      background-image: url('/images/analog/scan-surface.webp');
+      background-size: 1200px auto;
+      background-position: 40% 70%;
+      background-blend-mode: soft-light;
       z-index: -1;
       border-bottom: 1px solid var(--an-line);
       transition: box-shadow 0.3s;
@@ -247,60 +258,6 @@ export const Style = () => (
       background: var(--an-card);
       box-shadow: 5px 5px 0 #141f2612;
     }
-    #theme-analog .an-hero {
-      padding-top: 30px;
-    }
-    #theme-analog .an-hero-index,
-    #theme-analog .an-hero-bottom {
-      display: flex;
-      justify-content: space-between;
-      gap: 20px;
-      color: var(--an-muted);
-    }
-    #theme-analog .an-hero-grid {
-      display: grid;
-      grid-template-columns: 0.85fr 1.15fr;
-      align-items: center;
-      padding-block: 30px 48px;
-    }
-    #theme-analog .an-hero-copy {
-      position: relative;
-      z-index: 2;
-      margin-right: -155px;
-      padding-block: 30px 40px;
-    }
-    #theme-analog .an-hero-copy .an-eyebrow {
-      margin-bottom: 30px;
-      color: var(--an-accent);
-    }
-    #theme-analog .an-hero h1 {
-      max-width: 690px;
-      font: 400 clamp(48px, 5.6vw, 83px)/1.16 var(--an-hand);
-      letter-spacing: -0.035em;
-      transform: rotate(-2deg);
-      margin-bottom: 34px;
-      text-wrap: balance;
-    }
-    #theme-analog .an-hero h1 span {
-      background: var(--an-paper);
-      box-decoration-break: clone;
-      -webkit-box-decoration-break: clone;
-      box-shadow:
-        8px 0 var(--an-paper),
-        -6px 0 var(--an-paper);
-    }
-    #theme-analog .an-hero-bio {
-      max-width: 390px;
-      font-size: 15px;
-      color: var(--an-muted);
-      padding-right: 20px;
-    }
-    #theme-analog .an-hero-actions {
-      display: flex;
-      align-items: center;
-      gap: 28px;
-      margin-top: 30px;
-    }
     #theme-analog .an-button {
       display: inline-flex;
       gap: 34px;
@@ -333,69 +290,8 @@ export const Style = () => (
       color: var(--an-accent);
       gap: 22px;
     }
-    #theme-analog .an-hero-photo {
-      position: relative;
-      min-width: 0;
-      transform: rotate(1.3deg);
-    }
-    #theme-analog .an-hero-photo-frame {
-      position: relative;
-      height: clamp(410px, 42vw, 595px);
-      overflow: hidden;
-      background: #687983;
-      border: 7px solid #252d35;
-    }
-    #theme-analog .an-hero-photo picture {
-      display: block;
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-    }
-    #theme-analog .an-hero-image {
-      width: 100%;
-      height: calc(100% + 60px);
-      max-width: none;
-      object-fit: cover;
-      object-position: 62% 56%;
-      transform: translate3d(0, calc(-30px + var(--an-hero-shift, 0px)), 0);
-    }
-    #theme-analog .an-hero-photo figcaption {
-      display: flex;
-      justify-content: space-between;
-      gap: 16px;
-      margin-top: 12px;
-      font-size: 9px;
-    }
-    #theme-analog .an-photo-cross {
-      position: absolute;
-      color: #d1d5d5;
-      font: 22px var(--an-mono);
-      opacity: 0.8;
-    }
-    #theme-analog .an-photo-cross-top {
-      top: 9px;
-      right: 10px;
-    }
-    #theme-analog .an-photo-cross-bottom {
-      bottom: 9px;
-      left: 10px;
-    }
-    #theme-analog .an-hero-note {
-      position: absolute;
-      right: 10px;
-      bottom: -48px;
-      font-size: 23px;
-      transform: rotate(-5deg);
-      white-space: nowrap;
-    }
-    #theme-analog .an-hero-bottom {
-      margin-top: 20px;
-      padding-block: 22px;
-      border-top: 1px solid var(--an-ink);
-      border-bottom: 1px solid var(--an-line);
-    }
     #theme-analog .an-journal {
-      --an-muted: #3e4f5b;
+      --an-muted: #33424c;
       position: relative;
       isolation: isolate;
       padding-block: 86px 76px;
@@ -408,6 +304,10 @@ export const Style = () => (
       z-index: -1;
       pointer-events: none;
       background: var(--an-section);
+      background-image: url('/images/analog/scan-surface.webp');
+      background-size: 1100px auto;
+      background-position: 15% 35%;
+      background-blend-mode: soft-light;
     }
     .dark #theme-analog .an-journal {
       --an-muted: #b0bdc2;
@@ -528,7 +428,7 @@ export const Style = () => (
       color: var(--an-muted);
     }
     #theme-analog .an-category {
-      color: var(--an-accent);
+      color: var(--an-link);
     }
     #theme-analog .an-summary {
       font-size: 14px;
@@ -804,7 +704,7 @@ export const Style = () => (
       color: var(--an-muted);
     }
     #theme-analog .notion-link {
-      color: var(--an-accent);
+      color: var(--an-link);
       opacity: 1;
       border-bottom: 0 !important;
       text-decoration: none;
@@ -1035,12 +935,6 @@ export const Style = () => (
         gap: 16px;
         font-size: 12px;
       }
-      #theme-analog .an-hero-copy {
-        margin-right: -100px;
-      }
-      #theme-analog .an-hero h1 {
-        font-size: 58px;
-      }
       #theme-analog .an-post {
         grid-template-columns: 30px minmax(0, 1fr) 230px;
         gap: 22px;
@@ -1093,22 +987,6 @@ export const Style = () => (
         padding: 10px 20px;
         background: transparent;
       }
-      #theme-analog .an-hero-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-      #theme-analog .an-hero h1 {
-        font-size: 49px;
-      }
-      #theme-analog .an-hero-photo-frame {
-        height: 450px;
-      }
-      #theme-analog .an-hero-actions {
-        gap: 18px;
-      }
-      #theme-analog .an-hero-bio {
-        max-width: 270px;
-        font-size: 13px;
-      }
       #theme-analog .an-featured {
         gap: 28px;
       }
@@ -1153,68 +1031,6 @@ export const Style = () => (
         left: -20px;
         right: -20px;
         padding-inline: 20px;
-      }
-      #theme-analog .an-hero {
-        padding-top: 22px;
-      }
-      #theme-analog .an-hero-index {
-        font-size: 9px;
-      }
-      #theme-analog .an-hero-index > span:last-child {
-        display: none;
-      }
-      #theme-analog .an-hero-grid {
-        display: flex;
-        flex-direction: column;
-        align-items: stretch;
-        padding-block: 30px 64px;
-      }
-      #theme-analog .an-hero-copy {
-        margin: 0;
-        padding: 0 0 30px;
-      }
-      #theme-analog .an-hero-copy .an-eyebrow {
-        font-size: 10px;
-        margin-bottom: 20px;
-      }
-      #theme-analog .an-hero h1 {
-        max-width: 510px;
-        font-size: clamp(37px, 9.5vw, 57px);
-        line-height: 1.16;
-        margin-bottom: 24px;
-      }
-      #theme-analog .an-hero-bio {
-        font-size: 13px;
-        max-width: none;
-      }
-      #theme-analog .an-hero-actions {
-        margin-top: 22px;
-        gap: 24px;
-      }
-      #theme-analog .an-hero-photo {
-        margin-inline: 3px;
-      }
-      #theme-analog .an-hero-photo-frame {
-        height: auto;
-        aspect-ratio: 1.4;
-        border-width: 5px;
-      }
-      #theme-analog .an-hero-image {
-        height: 100%;
-        transform: none;
-        object-position: 58% center;
-      }
-      #theme-analog .an-hero-note {
-        bottom: -40px;
-        font-size: 21px;
-      }
-      #theme-analog .an-hero-photo figcaption {
-        font-size: 8px;
-      }
-      #theme-analog .an-hero-bottom {
-        padding-block: 17px;
-        font-size: 8px;
-        margin-top: 0;
       }
       #theme-analog .an-journal {
         padding-block: 58px;
@@ -1360,7 +1176,6 @@ export const Style = () => (
         scroll-behavior: auto !important;
       }
       #theme-analog .an-motion-trace,
-      #theme-analog .an-hero-image,
       #theme-analog .an-post-cover:hover .an-cover-image,
       #theme-analog .an-brand:hover .an-brand-flower,
       #theme-analog
@@ -1368,6 +1183,375 @@ export const Style = () => (
         > .notion-bookmark,
       #theme-analog .an-button:hover {
         transform: none;
+      }
+    }
+    #theme-analog .an-hero {
+      padding-top: 0;
+    }
+    #theme-analog .an-hero-index {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      padding-block: 18px;
+      color: var(--an-muted);
+    }
+    #theme-analog .an-hero-stage {
+      position: relative;
+      isolation: isolate;
+      min-height: 720px;
+      height: min(820px, calc(100svh - 55px));
+    }
+    #theme-analog .an-hero-photo {
+      position: absolute;
+      inset: 0 0 27px;
+      margin: 0;
+      transform: none;
+    }
+    #theme-analog .an-hero-photo-frame {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      background: #778a99;
+      clip-path: polygon(
+        0 0.6%,
+        15% 0,
+        38% 0.7%,
+        67% 0.2%,
+        100% 0,
+        100% 97.9%,
+        86% 99.1%,
+        59% 98.3%,
+        32% 100%,
+        0 98.9%
+      );
+    }
+    #theme-analog .an-hero-photo picture {
+      display: block;
+      height: 100%;
+    }
+    #theme-analog .an-hero-image {
+      display: block;
+      width: 100%;
+      height: calc(100% + 64px);
+      object-fit: cover;
+      object-position: 61% 55%;
+      max-width: none;
+      transform: translate3d(0, calc(-32px + var(--an-hero-shift, 0px)), 0);
+    }
+    #theme-analog .an-hero-photo figcaption {
+      position: absolute;
+      bottom: -17px;
+      left: 5.5%;
+      right: 5.5%;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      color: var(--an-ink);
+      font-size: 9px;
+    }
+    #theme-analog .an-hero-copy {
+      position: relative;
+      z-index: 2;
+      padding-top: 56px;
+      pointer-events: none;
+    }
+    #theme-analog .an-hero-copy .an-eyebrow {
+      display: inline-block;
+      background: #252b32;
+      color: #d9d9d3;
+      padding: 5px 11px;
+      margin-bottom: 28px;
+      transform: rotate(0.7deg);
+    }
+    #theme-analog .an-hero h1 {
+      max-width: 900px;
+      font: 400 clamp(53px, 6.4vw, 96px)/1.08 var(--an-hand);
+      letter-spacing: -0.045em;
+      margin-left: -8px;
+    }
+    #theme-analog .an-headline-fragment {
+      position: relative;
+      isolation: isolate;
+      display: table;
+      max-width: 100%;
+      padding: 1px 13px 8px;
+      margin: 0 0 10px;
+      color: #252b32;
+      transform: rotate(-2.6deg);
+    }
+    #theme-analog .an-headline-fragment::before {
+      content: '';
+      position: absolute;
+      inset: 0 -6px;
+      z-index: -1;
+      background: #d9d9d3 url('/images/analog/scan-surface.webp') 42% 37% /
+        700px;
+      background-blend-mode: soft-light;
+      clip-path: polygon(
+        0.3% 8%,
+        37% 2%,
+        98.8% 0,
+        100% 83%,
+        73% 97%,
+        28% 93%,
+        0.8% 100%
+      );
+    }
+    #theme-analog .an-headline-fragment:nth-child(2) {
+      margin-left: 13px;
+      transform: rotate(0.9deg);
+    }
+    #theme-analog .an-headline-fragment:nth-child(3) {
+      margin-left: 1px;
+      transform: rotate(-1.3deg);
+    }
+    #theme-analog .an-headline-fragment > span {
+      mask: url('/images/analog/ink-loss.svg') 0 0 / 170px 110px repeat;
+      mask-mode: luminance;
+    }
+    #theme-analog .an-hero-controls {
+      position: absolute;
+      left: max(56px, calc((100% - 1280px) / 2));
+      bottom: 74px;
+      z-index: 3;
+      padding: 19px 27px 21px;
+    }
+    #theme-analog .an-hero-controls::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: var(--an-paper) url('/images/analog/scan-surface.webp') 65%
+        82% / 720px;
+      background-blend-mode: soft-light;
+      clip-path: polygon(1% 0, 99% 3%, 100% 93%, 77% 100%, 0 96%);
+    }
+    #theme-analog .an-hero-bio {
+      color: var(--an-ink);
+      font-size: 13px;
+    }
+    #theme-analog .an-hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      margin-top: 13px;
+    }
+    #theme-analog .an-hero-actions .an-text-link {
+      font-size: 13px;
+    }
+    #theme-analog .an-hero-note {
+      position: absolute;
+      right: 5%;
+      top: 30px;
+      z-index: 2;
+      color: #252b32;
+      font-size: 26px;
+      transform: rotate(5deg);
+    }
+    #theme-analog .an-contact-print {
+      position: absolute;
+      right: 4%;
+      bottom: 66px;
+      z-index: 2;
+      width: 212px;
+      padding: 9px 9px 7px;
+      transform: rotate(5deg);
+      background: #d9d9d3 url('/images/analog/scan-surface.webp') 75% 12% /
+        420px;
+      background-blend-mode: soft-light;
+      box-shadow: -5px 7px 0 #252b3255;
+    }
+    #theme-analog .an-contact-print img {
+      display: block;
+      width: 100%;
+      height: 123px;
+      object-fit: cover;
+      object-position: 82% 73%;
+    }
+    #theme-analog .an-contact-print > span {
+      display: block;
+      color: #252b32;
+      font-size: 8px;
+      margin-top: 6px;
+    }
+    #theme-analog .an-hero-bottom {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      padding-block: 26px;
+      color: var(--an-muted);
+      border-bottom: 1px solid var(--an-line);
+    }
+    @media (min-width: 1600px) {
+      #theme-analog .an-hero-stage {
+        height: 920px;
+      }
+      #theme-analog .an-hero h1 {
+        max-width: 1100px;
+        font-size: 106px;
+      }
+    }
+    @media (max-width: 1100px) {
+      #theme-analog .an-hero h1 {
+        font-size: clamp(49px, 7.2vw, 77px);
+        max-width: 75%;
+      }
+      #theme-analog .an-hero-controls {
+        left: 32px;
+      }
+      #theme-analog .an-hero-stage {
+        min-height: 700px;
+      }
+      #theme-analog .an-contact-print {
+        width: 170px;
+      }
+      #theme-analog .an-contact-print img {
+        height: 110px;
+      }
+    }
+    @media (max-width: 650px) {
+      #theme-analog .an-hero-index {
+        font-size: 8px;
+        padding-block: 16px;
+      }
+      #theme-analog .an-hero-index > span:last-child {
+        display: none;
+      }
+      #theme-analog .an-hero-stage {
+        height: 690px;
+        min-height: 660px;
+      }
+      #theme-analog .an-hero-photo {
+        inset: 0 0 25px;
+      }
+      #theme-analog .an-hero-image {
+        height: 100%;
+        object-position: 62% center;
+        transform: none;
+      }
+      #theme-analog .an-hero-copy {
+        padding-top: 42px;
+      }
+      #theme-analog .an-hero-copy .an-eyebrow {
+        font-size: 8px;
+        margin-bottom: 22px;
+      }
+      #theme-analog .an-hero h1 {
+        font-size: clamp(32px, 10.5vw, 63px);
+        max-width: none;
+        line-height: 1.12;
+        letter-spacing: -0.04em;
+      }
+      #theme-analog .an-headline-fragment {
+        padding: 3px 8px 6px;
+        margin-bottom: 8px;
+      }
+      #theme-analog .an-headline-fragment:nth-child(2) {
+        margin-left: 5px;
+      }
+      #theme-analog .an-hero-controls {
+        left: 17px;
+        bottom: 55px;
+        padding: 17px 18px;
+      }
+      #theme-analog .an-hero-actions {
+        gap: 22px;
+      }
+      #theme-analog .an-hero-bio {
+        font-size: 12px;
+      }
+      #theme-analog .an-hero-controls .an-button {
+        gap: 24px;
+        padding: 10px 14px;
+      }
+      #theme-analog .an-contact-print {
+        width: 108px;
+        right: 14px;
+        bottom: 188px;
+        padding: 5px;
+        box-shadow: -3px 4px 0 #252b3255;
+      }
+      #theme-analog .an-contact-print img {
+        height: 74px;
+      }
+      #theme-analog .an-contact-print > span {
+        font-size: 6px;
+        margin-top: 4px;
+      }
+      #theme-analog .an-hero-note {
+        top: auto;
+        bottom: 330px;
+        right: 15px;
+        font-size: 20px;
+        color: #d9d9d3;
+        text-shadow: 1px 1px #252b32;
+      }
+      #theme-analog .an-hero-photo figcaption {
+        bottom: -15px;
+        font-size: 7px;
+      }
+      #theme-analog .an-hero-bottom {
+        font-size: 8px;
+        padding-block: 22px;
+      }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      #theme-analog .an-hero-image {
+        transform: none;
+      }
+    }
+    @media (max-width: 360px) {
+      #theme-analog .an-hero h1 {
+        font-size: 31px;
+      }
+    }
+    #theme-analog .an-section-heading h2 {
+      mask: url('/images/analog/ink-loss.svg') 15px 0 / 170px 110px repeat;
+      mask-mode: luminance;
+    }
+    @media (min-width: 851px) {
+      #theme-analog .an-featured {
+        display: block;
+        padding-bottom: 52px;
+      }
+      #theme-analog .an-featured .an-post-cover {
+        width: 82%;
+        aspect-ratio: 1.9;
+      }
+      #theme-analog .an-featured .an-post-copy {
+        position: relative;
+        isolation: isolate;
+        margin: -65px 0 0 32%;
+        padding: 29px 34px;
+      }
+      #theme-analog .an-featured .an-post-copy::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        background: var(--an-paper) url('/images/analog/scan-surface.webp') 64%
+          88% / 680px;
+        background-blend-mode: soft-light;
+        clip-path: polygon(0 2%, 97% 0, 100% 97%, 1% 100%);
+      }
+      #theme-analog .an-featured h3 {
+        font-size: 43px;
+      }
+      #theme-analog .an-post-grid > .an-post:nth-child(3n + 1) {
+        grid-template-columns: 30px minmax(0, 1fr) minmax(0, 1.15fr);
+        gap: 30px;
+        padding-block: 42px;
+      }
+      #theme-analog .an-post-grid > .an-post:nth-child(3n + 1) .an-post-cover {
+        grid-column: 2;
+        aspect-ratio: 1.5;
+      }
+      #theme-analog .an-post-grid > .an-post:nth-child(3n + 1) .an-post-copy {
+        grid-column: 3;
+        align-self: center;
+      }
+      #theme-analog .an-post-grid > .an-post:nth-child(3n + 2) h3 {
+        font-size: 35px;
       }
     }
   `}</style>

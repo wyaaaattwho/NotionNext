@@ -189,7 +189,16 @@ function Publication({ entry, onZoom, index }) {
 
 function Project({ entry, onZoom, index }) {
   return (
-    <article className='an-project-card' data-reveal>
+    <article
+      className={`an-project-card an-project-layout-${index % 3}`}
+      data-reveal
+    >
+      <header className='an-project-heading'>
+        <p className='an-label'>
+          PROJECT / {String(index + 1).padStart(2, '0')}
+        </p>
+        <RichBlock descriptor={entry.title} as='h3' />
+      </header>
       <div className='an-project-art'>
         {entry.images.map(image => (
           <ProfileImage
@@ -201,14 +210,16 @@ function Project({ entry, onZoom, index }) {
         ))}
       </div>
       <div className='an-project-body'>
-        <p className='an-label'>
-          PROJECT / {String(index + 1).padStart(2, '0')}
-        </p>
-        <RichBlock descriptor={entry.title} as='h3' />
         {entry.description.map(block => (
           <RichBlock key={block.id} descriptor={block} />
         ))}
       </div>
+      <span
+        className='an-project-margin-note an-handwritten'
+        aria-hidden='true'
+      >
+        project / {String(index + 1).padStart(2, '0')}
+      </span>
     </article>
   )
 }
