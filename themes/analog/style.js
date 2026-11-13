@@ -1505,7 +1505,23 @@ export const Style = () => (
         font-size: 31px;
       }
     }
-    #theme-analog .an-section-heading h2 {
+    #theme-analog .an-profile-header h1,
+    #theme-analog .an-article-header h1,
+    #theme-analog .an-search h1,
+    #theme-analog .an-archive > h1,
+    #theme-analog .an-taxonomy > h1,
+    #theme-analog .an-empty h1 {
+      font-family: var(--an-display);
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+    #theme-analog .an-section-heading h2,
+    #theme-analog .an-profile-header h1,
+    #theme-analog .an-article-header h1,
+    #theme-analog .an-search h1,
+    #theme-analog .an-archive > h1,
+    #theme-analog .an-taxonomy > h1,
+    #theme-analog .an-empty h1 {
       mask: url('/images/analog/ink-loss.svg') 15px 0 / 170px 110px repeat;
       mask-mode: luminance;
     }
