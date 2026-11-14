@@ -375,7 +375,16 @@ export const Style = () => (
       display: block;
       aspect-ratio: 1.55;
       overflow: hidden;
-      background: #c5cdd0;
+      padding: 8px 8px 23px;
+      border: 1px solid var(--an-ink);
+      background: var(--an-card);
+      box-shadow: 3px 3px 0 var(--an-line);
+    }
+    #theme-analog .an-post-image {
+      display: block;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
     }
     #theme-analog .an-cover-image {
       width: 100%;
@@ -393,11 +402,10 @@ export const Style = () => (
     #theme-analog .an-post-image-label {
       position: absolute;
       left: 9px;
-      bottom: 9px;
-      padding: 3px 6px;
-      background: #b9c2c7;
-      color: #252d35;
-      font-size: 9px;
+      bottom: 4px;
+      padding: 0;
+      color: var(--an-muted);
+      font-size: 8px;
     }
     #theme-analog .an-post-copy {
       grid-column: 2;
@@ -782,6 +790,26 @@ export const Style = () => (
     }
     #theme-analog .notion-asset-wrapper {
       margin-block: 26px;
+    }
+    #theme-analog .an-article .notion-asset-wrapper-image {
+      padding: clamp(8px, 1.5vw, 14px);
+      border: 1px solid var(--an-ink);
+      background: var(--an-card);
+      box-shadow: 4px 5px 0 var(--an-line);
+      border-radius: 0;
+    }
+    #theme-analog .an-article .notion-asset-wrapper-image > div {
+      outline: 1px solid var(--an-line);
+      outline-offset: 3px;
+      background: #fff;
+    }
+    #theme-analog
+      .an-article
+      .notion-asset-wrapper-image
+      .notion-asset-caption {
+      margin-top: 10px;
+      padding: 10px 0 2px;
+      border-top: 1px solid var(--an-line);
     }
     #theme-analog .notion-asset-caption,
     #theme-analog .notion-asset-wrapper figcaption {

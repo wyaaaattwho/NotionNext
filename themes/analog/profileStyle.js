@@ -199,9 +199,6 @@ export const ProfileStyle = () => (
       align-self: start;
     }
     #theme-analog .an-paper-art {
-      --an-muted: #58666c;
-      background: #fff;
-      color: #222b30;
       padding: 18px;
     }
     #theme-analog .an-paper-art {
@@ -499,13 +496,53 @@ export const ProfileStyle = () => (
       mask-mode: luminance;
     }
     #theme-analog .an-project-art {
-      --an-muted: #46545e;
       grid-column: 1 / 13;
       grid-row: 2;
       min-width: 0;
-      background: #fff;
-      color: #252b32;
       padding: 20px;
+    }
+    #theme-analog .an-profile-custom .notion-asset-wrapper-image,
+    #theme-analog .an-paper-art,
+    #theme-analog .an-project-art {
+      position: relative;
+      border: 1px solid var(--an-line);
+      background: var(--an-card);
+      box-shadow: 4px 5px 0 var(--an-line);
+    }
+    #theme-analog .an-profile-custom .notion-asset-wrapper-image::before,
+    #theme-analog .an-paper-art::before,
+    #theme-analog .an-project-art::before,
+    #theme-analog .an-project-art::after {
+      content: '';
+      position: absolute;
+      width: 46px;
+      height: 13px;
+      background: #7c919f66;
+      pointer-events: none;
+      z-index: 1;
+      transform: rotate(-28deg);
+    }
+    #theme-analog .an-profile-custom .notion-asset-wrapper-image::before,
+    #theme-analog .an-paper-art::before,
+    #theme-analog .an-project-art::before {
+      top: 1px;
+      left: -8px;
+    }
+    #theme-analog .an-project-art::after {
+      bottom: 1px;
+      right: -8px;
+    }
+    #theme-analog .an-paper-art .an-profile-figure-link,
+    #theme-analog .an-project-art .an-profile-figure-link {
+      padding: clamp(8px, 1.2vw, 16px);
+      border: 1px solid rgba(37, 45, 53, 0.18);
+      background: #fff;
+    }
+    #theme-analog .an-profile-custom .notion-asset-wrapper-image {
+      padding: clamp(10px, 1.5vw, 18px);
+    }
+    #theme-analog .an-profile-custom .notion-asset-wrapper-image > div {
+      background: #fff;
     }
     #theme-analog .an-project-art img {
       display: block;

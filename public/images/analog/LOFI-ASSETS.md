@@ -1,5 +1,7 @@
 # Lo-fi revision — 2026-11-13
 
+Historical variants: the homepage switched back to the full-resolution, lossless original photograph on 2026-11-14. See [README.md](./README.md) for the current asset.
+
 The built-in imagegen tool edited the earlier original city image and generated a new scanned-paper texture. The anonymous person is not the website author.
 
 - `city-study-lofi.jpg`: 640 × 427; JPEG quality 38, 4:2:0 chroma subsampling, approximately 11 KB. Intentionally enlarged in the immersive hero.

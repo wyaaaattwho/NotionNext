@@ -1,10 +1,12 @@
 # City study / 01
 
-Current lo-fi image variants, scanned-paper texture and their generation prompts are documented in [LOFI-ASSETS.md](./LOFI-ASSETS.md). The files below preserve the earlier high-resolution image.
+The homepage now uses the original motion-blurred photograph at full resolution. Earlier lo-fi variants and the scanned-paper texture are documented in [LOFI-ASSETS.md](./LOFI-ASSETS.md).
 
 Original theme illustration generated with the built-in imagegen tool on 2026-11-13. The anonymous figure is not a portrait of the site author.
 
-Web assets: `city-study.webp` (1536 × 1024) and `city-study-small.webp` (800 × 533). Both are compressed WebP exports of the same original image.
+Current asset: `city-study-original.webp` (1536 × 1024, 1,638,998 bytes). Encoded directly from the original generated PNG with Sharp `webp({ lossless: true, effort: 6 })`, without resizing or filtering. Raw decoded RGB pixels were compared and are identical. Both the immersive hero and contact print reuse this file, including on mobile.
+
+Earlier exports: `city-study.webp` (1536 × 1024) and `city-study-small.webp` (800 × 533), both lossy WebP exports of the same original image.
 
 ## Generation prompt
 

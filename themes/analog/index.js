@@ -264,20 +264,14 @@ function Hero({ siteInfo }) {
         <figure className='an-hero-photo'>
           <div className='an-hero-photo-frame'>
             <picture>
-              {!customImage && (
-                <source
-                  media='(max-width: 700px)'
-                  srcSet='/images/analog/city-study-lofi-small.jpg'
-                />
-              )}
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 id='header-cover'
                 className='an-hero-image'
                 src={image}
-                alt='原创低保真城市影像：静止的匿名人影、拖影中的行人和街道'
-                width='640'
-                height='427'
+                alt='原创城市摄影：静止的匿名人影与运动拖影中的行人和街道'
+                width='1536'
+                height='1024'
                 fetchpriority='high'
                 decoding='async'
               />
@@ -301,13 +295,7 @@ function Hero({ siteInfo }) {
         {!customImage && (
           <div className='an-contact-print' aria-hidden='true'>
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src='/images/analog/city-study-lofi-small.jpg'
-              alt=''
-              width='480'
-              height='320'
-              loading='lazy'
-            />
+            <img src={image} alt='' width='1536' height='1024' loading='lazy' />
             <span className='an-label'>CONTACT / 01—02</span>
           </div>
         )}
@@ -369,12 +357,14 @@ function PostCard({ post, featured = false, index = 0 }) {
           className='an-post-cover'
           aria-label={`阅读：${post.title}`}
         >
-          <LazyImage
-            src={cover}
-            alt={post.title}
-            width={featured ? 640 : 320}
-            className='an-cover-image'
-          />
+          <span className='an-post-image'>
+            <LazyImage
+              src={cover}
+              alt={post.title}
+              width={featured ? 640 : 320}
+              className='an-cover-image'
+            />
+          </span>
           <span className='an-post-image-label an-label' aria-hidden='true'>
             {featured
               ? 'LATEST ENTRY'
