@@ -1,0 +1,21 @@
+# Original photographic cutouts — 2026-11-15
+
+Generated with the built-in imagegen tool. These are original decorative photographs/collages, not depictions of the author or research results. Transparent PNG outputs were exported with Sharp as WebP (`quality: 88`, `alphaQuality: 100`, `effort: 6`), fitted inside 640 × 900 without enlargement. Real alpha is preserved. The homepage's lossless hero photograph is unchanged.
+
+- [street.webp](./street.webp): 450 × 900, 111,638 bytes.
+- [audio.webp](./audio.webp): 640 × 588, 97,606 bytes.
+- [robot.webp](./robot.webp): 640 × 498, 55,228 bytes.
+
+## Prompts
+
+### street.webp
+
+Use case: stylized-concept. Asset type: original transparent photographic paper-cut collage for the margins of a serious AI research portfolio with early-2000s alternative-rock zine art direction. Subject: a SINGLE narrow vertical cutout of a cold overcast city fire escape and a street utility pole with a few overhead wires, photographed candidly from below, with a little torn blue-gray photocopied paper visible behind it. Composition: one cohesive irregular silhouette, tall portrait orientation, all edges visible with generous fully transparent margin, no rectangular photo frame. Scissor-cut dirty silver paper rim around the silhouette, naturally uneven. Desaturated washed denim blue, silver gray, charcoal, tiny faded burgundy tape scrap. Believable photographic detail, restrained halftone and aged print grain, authentic pasted paper texture. The architecture stays recognizable when displayed about 160px wide. No people, no typography, no letters, no brand logos, no watermark, no neon, no cream background. Actual transparent alpha background, no shadow or checkerboard baked into the empty background. This is an isolated cutout asset, not a website mockup.
+
+### audio.webp
+
+Use case: stylized-concept. Asset type: original transparent photographic paper-cut collage for the margins of an AI research portfolio with early-2000s alternative-rock zine art direction. Subject: ONE cohesive small composition of a scratched unbranded silver compact disc partially overlapping chunky wired charcoal on-ear headphones from circa 2002; the coiled wire makes one loose loop, with a small torn faded burgundy paper scrap underneath. Composition: diagonal oval silhouette, compact roughly square, all parts fully visible and generous fully transparent margin, suitable at 200px wide. Actual photographed objects with a thin irregular cold silver cut-paper rim, scissor edges, subdued photocopier halftone on shadow areas, worn printed-paper material. Washed steel blue, cool silver gray, charcoal, faded burgundy only, no rainbow holographic color. Not glossy product advertising, not clean vector icons. No lettering on disc, no logos, no writing, no watermark, no neon, no beige. Actual transparent alpha background, no shadow or checkerboard baked into the empty background. Isolated cutout asset only, no webpage mockup.
+
+### robot.webp
+
+Use case: stylized-concept. Asset type: original transparent photographic paper-cut collage for the margins of a serious AI and robotics research portfolio, early-2000s alternative-rock independent magazine art direction. Subject: ONE cropped but complete composition of a small unbranded laboratory robot gripper with two parallel industrial fingers, reaching diagonally upward, its metal wrist and a short dark cable visible, mounted over a ragged scrap of cold blue-gray graph paper with a few nonverbal pencil arrows. Composition: compact diagonal irregular silhouette, fully visible with generous fully transparent margins, suitable at 190px wide. Authentic monochrome laboratory photograph reproduced on worn photocopied paper, natural fine halftone, thin uneven scissor-cut cold silver paper border, tiny dusty burgundy tape fragment. Color palette desaturated steel blue, charcoal, cool silver gray, faded burgundy. Keep the gripper mechanically plausible and the form immediately legible. No sci-fi glowing robot, no human fingers, no corporate logo, no letters or numbers, no watermark, no warm cream, no neon. Actual transparent alpha background, no checkerboard or cast shadow baked into empty background. Isolated collage asset only, not website layout.

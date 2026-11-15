@@ -12,6 +12,8 @@ import CONFIG from './config'
 import { Style } from './style'
 import useAnalogMotion from './useMotion'
 import { FONT_PRELOAD, StyleFonts } from './fonts'
+import Collage from './Collage'
+import { CollageStyle } from './collageStyle'
 
 const Comment = dynamic(() => import('@/components/Comment'), { ssr: false })
 const ShareBar = dynamic(() => import('@/components/ShareBar'), { ssr: false })
@@ -123,7 +125,9 @@ const LayoutBase = props => {
       </Head>
       <StyleFonts />
       <Style />
+      <CollageStyle />
       <div className='an-motion-trace' aria-hidden='true' />
+      <Collage scene='margins' />
       <div className='an-reading-progress' aria-hidden='true' />
       <a className='an-skip' href='#an-main'>
         跳至正文
@@ -187,6 +191,7 @@ const LayoutBase = props => {
         {children}
       </main>
       <footer className='an-footer an-shell'>
+        <Collage scene='footer' />
         <div className='an-footer-signature'>
           <span>RESEARCH / CODE / NOTES.</span>
           <span className='an-handwritten' aria-hidden='true'>
@@ -454,6 +459,7 @@ function Journal({ featured = false, ...props }) {
     : category || tag || 'Research notes'
   return (
     <section id='an-journal' className='an-journal an-shell'>
+      {featured && <Collage scene='journal' />}
       <div className='an-section-heading'>
         <div>
           <p className='an-eyebrow'>THE NOTEBOOK / 研究与实践</p>

@@ -15,6 +15,7 @@ import { parseProfile } from '../impression/profileData'
 import { ProfileStyle } from './profileStyle'
 import { splitPaperBibliography } from '../impression/profilePresentation'
 import usePublicationMasonry from './usePublicationMasonry'
+import Collage from './Collage'
 
 const Equation = dynamic(
   () => import('@/components/Equation').then(m => m.Equation),
@@ -366,6 +367,7 @@ export default function Profile({ post }) {
           >
             {section.heading && (
               <header className='an-profile-section-header' data-reveal>
+                {index === 0 && <Collage scene='research' />}
                 <span className='an-profile-section-number' aria-hidden='true'>
                   {String(index + 1).padStart(2, '0')}
                 </span>
