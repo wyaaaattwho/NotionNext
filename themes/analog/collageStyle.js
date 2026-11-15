@@ -5,6 +5,7 @@ export const CollageStyle = () => (
       position: fixed;
       inset: 0;
       z-index: 0;
+      opacity: 0.2;
       overflow: clip;
       pointer-events: none;
       user-select: none;
@@ -44,57 +45,8 @@ export const CollageStyle = () => (
     #theme-analog .an-journal::before {
       display: none;
     }
-    #theme-analog
-      #an-main
-      :is(
-        .an-hero-index,
-        .an-hero-bottom,
-        .an-section-heading > div,
-        .an-section-heading > .an-text-link,
-        .an-categories > a,
-        .an-post-copy,
-        .an-post-number,
-        .an-pagination,
-        .an-notice,
-        .an-profile-header,
-        .an-profile-intro,
-        .an-profile-nav,
-        .an-profile-section-header,
-        .an-profile-entries-text,
-        .an-profile-entries-content,
-        .an-career-card,
-        .an-paper-body,
-        .an-project-body,
-        .an-article-header,
-        .an-adjacent,
-        .an-recommend,
-        .an-search,
-        .an-archive,
-        .an-taxonomy,
-        .an-empty
-      ),
-    #theme-analog .an-footer,
-    #theme-analog
-      .an-article
-      .notion
-      :is(
-        .notion-text,
-        .notion-list,
-        .notion-h,
-        .notion-quote,
-        .notion-table-of-contents
-      ) {
-      background: var(--an-paper) url('/images/analog/scan-surface.webp') 50%
-        35% / 1100px auto;
-      background-blend-mode: soft-light;
-      box-shadow:
-        12px 0 0 var(--an-paper),
-        -12px 0 0 var(--an-paper);
-    }
-    #theme-analog .an-profile-section-header,
-    #theme-analog .an-profile-nav {
-      width: fit-content;
-      max-width: 100%;
+    .dark #theme-analog .an-collage-background {
+      opacity: 0.13;
     }
     .dark #theme-analog .an-cutout {
       filter: brightness(0.82) drop-shadow(5px 8px 2px #10182080);
