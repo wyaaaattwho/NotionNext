@@ -25,9 +25,9 @@ export const CollageStyle = () => (
     }
     #theme-analog .an-cutout-street {
       --an-cutout-angle: -14deg;
-      width: clamp(520px, 43vw, 820px);
-      left: -15vw;
-      top: -28vh;
+      width: clamp(360px, 30vw, 570px);
+      left: -10.5vw;
+      top: -20vh;
     }
     #theme-analog .an-cutout-audio {
       --an-cutout-angle: 16deg;
@@ -49,9 +49,9 @@ export const CollageStyle = () => (
     }
     @media (max-width: 650px) {
       #theme-analog .an-cutout-street {
-        width: 370px;
-        left: -190px;
-        top: -100px;
+        width: 270px;
+        left: -140px;
+        top: -75px;
       }
       #theme-analog .an-cutout-audio {
         width: 350px;
