@@ -5,7 +5,6 @@ export const CollageStyle = () => (
       position: fixed;
       inset: 0;
       z-index: 0;
-      opacity: 0.2;
       overflow: clip;
       pointer-events: none;
       user-select: none;
@@ -44,9 +43,6 @@ export const CollageStyle = () => (
     }
     #theme-analog .an-journal::before {
       display: none;
-    }
-    .dark #theme-analog .an-collage-background {
-      opacity: 0.13;
     }
     .dark #theme-analog .an-cutout {
       filter: brightness(0.82) drop-shadow(5px 8px 2px #10182080);
