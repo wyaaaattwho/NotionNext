@@ -127,7 +127,7 @@ const LayoutBase = props => {
       <Style />
       <CollageStyle />
       <div className='an-motion-trace' aria-hidden='true' />
-      <Collage scene='margins' />
+      <Collage />
       <div className='an-reading-progress' aria-hidden='true' />
       <a className='an-skip' href='#an-main'>
         跳至正文
@@ -191,7 +191,6 @@ const LayoutBase = props => {
         {children}
       </main>
       <footer className='an-footer an-shell'>
-        <Collage scene='footer' />
         <div className='an-footer-signature'>
           <span>RESEARCH / CODE / NOTES.</span>
           <span className='an-handwritten' aria-hidden='true'>
@@ -459,7 +458,6 @@ function Journal({ featured = false, ...props }) {
     : category || tag || 'Research notes'
   return (
     <section id='an-journal' className='an-journal an-shell'>
-      {featured && <Collage scene='journal' />}
       <div className='an-section-heading'>
         <div>
           <p className='an-eyebrow'>THE NOTEBOOK / 研究与实践</p>

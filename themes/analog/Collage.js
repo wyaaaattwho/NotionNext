@@ -4,18 +4,11 @@ const assets = {
   robot: { width: 640, height: 498 }
 }
 
-const scenes = {
-  margins: ['street', 'robot'],
-  journal: ['street', 'audio'],
-  research: ['robot'],
-  footer: ['audio']
-}
-
-/** Decorative cutouts stay out of the content, reading order and hit targets. */
-export default function Collage({ scene }) {
+/** A continuous pasted-paper backdrop beneath the site's reading surfaces. */
+export default function Collage() {
   return (
-    <div className={`an-collage an-collage-${scene}`} aria-hidden='true'>
-      {scenes[scene].map(name => (
+    <div className='an-collage-background' aria-hidden='true'>
+      {Object.keys(assets).map(name => (
         // eslint-disable-next-line @next/next/no-img-element
         <img
           key={name}
